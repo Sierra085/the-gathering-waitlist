@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Gathering — Waitlist</title>
+  <style>
+    :root {
+      --bg: #faf6ef;
+      --text: #3b2f2f;
+      --accent: #a67b5b;
+      --highlight: #d7c4a3;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Poppins", sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    header {
+      text-align: center;
+      padding: 3rem 1rem 1rem;
+    }
+
+    h1 {
+      font-size: 2.2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    p {
+      max-width: 600px;
+      margin: 0 auto 2rem;
+      color: #544f4f;
+    }
+
+    form {
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+      padding: 2rem;
+      width: 90%;
+      max-width: 700px;
+      display: grid;
+      gap: 1rem;
+    }
+
+    label {
+      font-weight: 600;
+      margin-bottom: 0.25rem;
+      display: block;
+    }
+
+    input, select, textarea {
+      width: 100%;
+      padding: 0.6rem;
+      border: 1px solid #d4c7b3;
+      border-radius: 8px;
+      font-family: inherit;
+      background: #fffdf9;
+    }
+
+    textarea {
+      min-height: 80px;
+    }
+
+    button {
+      background: var(--accent);
+      color: white;
+      padding: 0.8rem 1.5rem;
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    button:hover {
+      background: var(--highlight);
+      color: var(--text);
+    }
+
+    footer {
+      margin-top: 2rem;
+      text-align: center;
+      font-size: 0.9rem;
+      color: #6a5b5b;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1>Work Alone, Together.</h1>
+    <p>The Gathering is a global virtual coworking space for independent thinkers, founders, and creators — where focus meets connection.</p>
+  </header>
+
+  <form id="waitlistForm">
+    <label>Name</label>
+    <input type="text" name="name" required />
+
+    <label>Age</label>
+    <input type="number" name="age" min="16" />
+
+    <label>Country</label>
+    <input type="text" name="country" />
+
+    <label>Virtual coworking experience</label>
+    <select name="experience" required>
+      <option value="0">0 — Never tried</option>
+      <option value="1">1 — Know about it but haven’t tried</option>
+      <option value="2">2 — Tried once or twice</option>
+      <option value="3">3 — Regular user</option>
+    </select>
+
+    <label>If 2 or 3 — Tell us about your experience</label>
+    <textarea name="experience_details"></textarea>
+
+    <label>Relationship status</label>
+    <input type="text" name="relationship" placeholder="e.g. Single, Married, Parent" />
+
+    <label>Current working status / occupation</label>
+    <input type="text" name="occupation" />
+
+    <label>Current life focus</label>
+    <input type="text" name="life_focus" placeholder="e.g. Pivoting, Starting side hustle, Finishing PhD" />
+
+    <label>Tasks, projects & goals you’d like accountability for</label>
+    <textarea name="goals"></textarea>
+
+    <label>Features you’re most interested in</label>
+    <textarea name="features"></textarea>
+
+    <label>How much would you pay monthly (local currency)</label>
+    <input type="text" name="pricing" placeholder="e.g. 10 USD" />
+
+    <label>Any other useful info</label>
+    <textarea name="other_info"></textarea>
+
+    <label>Email</label>
+    <input type="email" name="email" required />
+
+    <button type="submit">Join the Waitlist</button>
+  </form>
+
+  <footer>
+    <p>✨ Built by The Gathering Team — 2025</p>
+  </footer>
+
+  <script>
+    document.getElementById("waitlistForm").addEventListener("submit", async (e) => {
+      e.preventDefault();
+      alert("Thank you! You’re on the waitlist — we’ll reach out soon.");
+      e.target.reset();
+    });
+  </script>
+</body>
+</html>
