@@ -1,4 +1,3 @@
-// Wait until the DOM is fully ready
 document.addEventListener("DOMContentLoaded", () => {
 
   // smooth scroll from any CTA button
@@ -13,7 +12,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const questions = document.querySelectorAll(".question");
   const progressBar = document.getElementById("progress");
 
-  function nextQuestion() {
+  // expose nextQuestion globally
+  window.nextQuestion = function () {
     if (currentStep < questions.length) {
       questions[currentStep - 1].classList.remove("active");
       currentStep++;
@@ -22,7 +22,7 @@ document.addEventListener("DOMContentLoaded", () => {
         updateProgress();
       }
     }
-  }
+  };
 
   function updateProgress() {
     const percent = ((currentStep - 1) / (questions.length - 1)) * 100;
@@ -91,7 +91,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const submitBtn = form.querySelector('button[type="submit"]');
     const current = document.querySelector(".question.active");
 
-    // disable button + show status
+    // 1️⃣ disable button + show status
     submitBtn.disabled = true;
     submitBtn.textContent = "Submitting...";
 
@@ -99,7 +99,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const oldMsg = current.querySelector("#statusMessage");
     if (oldMsg) oldMsg.remove();
 
-    // show loading text inside active question
+    // 2️⃣ show loading text inside active question
     const statusMsg = document.createElement("p");
     statusMsg.id = "statusMessage";
     statusMsg.textContent = "Sending your response, please wait...";
@@ -134,7 +134,7 @@ document.addEventListener("DOMContentLoaded", () => {
       statusMsg.textContent = "⚠️ Something went wrong. Please try again later.";
       submitBtn.textContent = "Retry";
     } finally {
-      // allow resubmission after short delay
+      // 4️⃣ allow resubmission after short delay
       setTimeout(() => {
         submitBtn.disabled = false;
         if (submitBtn.textContent === "Submitted") {
