@@ -93,6 +93,26 @@ body {
   justify-content: center;
 }
 
+#story ul {
+  list-style: none;
+  padding: 0;
+  margin: 1rem 0;
+}
+
+#story ul li {
+  margin-bottom: 0.5rem;
+  position: relative;
+  padding-left: 1.2rem;
+}
+
+#story ul li::before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  color: var(--accent);
+}
+
+
 .story-inner {
   display: flex;
   flex-wrap: wrap;
