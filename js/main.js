@@ -14,25 +14,10 @@ function nextQuestion() {
   if (currentStep < questions.length) {
     questions[currentStep - 1].classList.remove("active");
     currentStep++;
-    questions[currentStep - 1].classList.add("active");
-    updateProgress();
-    // allow pressing Enter to go to the next question
-document.addEventListener("keydown", (e) => {
-  // only trigger if an input or select is focused
-  const active = document.activeElement;
-  if (
-    (active.tagName === "INPUT" || active.tagName === "SELECT" || active.tagName === "TEXTAREA") &&
-    e.key === "Enter"
-  ) {
-    e.preventDefault();
-    // don't trigger on submit button
-    const current = document.querySelector(".question.active");
-    const btn = current.querySelector("button[type='button']");
-    if (btn) btn.click();
-  }
-  if (!questions[currentStep - 1]) return;
-});
-
+    if (questions[currentStep - 1]) {
+      questions[currentStep - 1].classList.add("active");
+      updateProgress();
+    }
   }
 }
 
@@ -41,26 +26,27 @@ function updateProgress() {
   progressBar.style.width = percent + "%";
 }
 
+// 🧠 Coworking experience logic (fixed)
 function handleExperience(select) {
   const value = select.value;
   const details = document.getElementById("experienceDetails");
   const current = document.querySelector(".question.active");
 
-  // always clear any visible extra question first
+  // reset details visibility
   details.style.display = "none";
   details.classList.remove("active");
 
   if (value === "2" || value === "3") {
-    // show the details question and move focus there
+    // show the extra question
     current.classList.remove("active");
     details.style.display = "flex";
     details.classList.add("active");
     currentStep = parseInt(details.dataset.step);
     updateProgress();
   } else if (value === "0" || value === "1") {
-    // skip the details question and jump ahead
+    // skip ahead properly
     current.classList.remove("active");
-    currentStep += 2; // move two steps forward to next logical question
+    currentStep += 2; // move to the next relevant question
     if (questions[currentStep - 1]) {
       questions[currentStep - 1].classList.add("active");
       updateProgress();
@@ -68,6 +54,33 @@ function handleExperience(select) {
   }
 }
 
+// ⌨️ Allow Enter / Return to act as "Next" or "Submit"
+document.addEventListener("keydown", (e) => {
+  const active = document.activeElement;
+  if (!active) return;
+
+  const tag = active.tagName.toLowerCase();
+  const isEnter =
+    e.key === "Enter" ||
+    e.key === "NumpadEnter" ||
+    e.keyCode === 13;
+
+  // ignore Enter in textareas
+  if (!isEnter || tag === "textarea") return;
+
+  e.preventDefault();
+
+  const current = document.querySelector(".question.active");
+  if (!current) return;
+
+  // find button in the current question
+  const submitBtn = current.querySelector('button[type="submit"]');
+  const nextBtn = current.querySelector('button[type="button"]');
+
+  (submitBtn || nextBtn)?.click();
+});
+
+// 🪄 Google Sheets submission
 document.getElementById("waitlistForm").addEventListener("submit", async (e) => {
   e.preventDefault();
   const data = Object.fromEntries(new FormData(e.target).entries());
@@ -81,4 +94,3 @@ document.getElementById("waitlistForm").addEventListener("submit", async (e) => 
   alert("✨ Thank you! You're on the waitlist.");
   e.target.reset();
 });
-
