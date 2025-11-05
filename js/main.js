@@ -34,9 +34,17 @@ function handleExperience(select) {
   }
 }
 
-document.getElementById("waitlistForm").addEventListener("submit", (e) => {
+document.getElementById("waitlistForm").addEventListener("submit", async (e) => {
   e.preventDefault();
-  questions[currentStep - 1].classList.remove("active");
-  document.getElementById("thankYou").classList.add("active");
-  updateProgress();
+  const data = Object.fromEntries(new FormData(e.target).entries());
+
+  await fetch("https://script.google.com/macros/s/AKfycbwRnpf4vDhvsywhLg4NRRwCfg-TMMChvx3N5A8RUg2YvtbSeAVRGGOfGa7H0SINJr2r/exec", {
+    method: "POST",
+    body: JSON.stringify(data),
+    headers: { "Content-Type": "application/json" }
+  });
+
+  alert("✨ Thank you! You're on the waitlist.");
+  e.target.reset();
 });
+
