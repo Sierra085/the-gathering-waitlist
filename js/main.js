@@ -80,17 +80,59 @@ document.addEventListener("keydown", (e) => {
   (submitBtn || nextBtn)?.click();
 });
 
-// 🪄 Google Sheets submission
+// 🪄 Google Sheets submission with visual feedback inside the active card
 document.getElementById("waitlistForm").addEventListener("submit", async (e) => {
   e.preventDefault();
-  const data = Object.fromEntries(new FormData(e.target).entries());
+  const form = e.target;
+  const data = Object.fromEntries(new FormData(form).entries());
+  const submitBtn = form.querySelector('button[type="submit"]');
+  const current = document.querySelector(".question.active");
 
-  await fetch("https://script.google.com/macros/s/AKfycbwRnpf4vDhvsywhLg4NRRwCfg-TMMChvx3N5A8RUg2YvtbSeAVRGGOfGa7H0SINJr2r/exec", {
-    method: "POST",
-    body: JSON.stringify(data),
-    headers: { "Content-Type": "application/json" }
-  });
+  // 1️⃣ disable button + show status
+  submitBtn.disabled = true;
+  submitBtn.textContent = "Submitting...";
 
-  alert("✨ Thank you! You're on the waitlist.");
-  e.target.reset();
+  // remove any old message first
+  const oldMsg = current.querySelector("#statusMessage");
+  if (oldMsg) oldMsg.remove();
+
+  // 2️⃣ show loading text inside active question
+  const statusMsg = document.createElement("p");
+  statusMsg.id = "statusMessage";
+  statusMsg.textContent = "Sending your response, please wait...";
+  statusMsg.style.marginTop = "1rem";
+  current.appendChild(statusMsg);
+
+  try {
+    const response = await fetch(
+      "https://script.google.com/macros/s/AKfycbwRnpf4vDhvsywhLg4NRRwCfg-TMMChvx3N5A8RUg2YvtbSeAVRGGOfGa7H0SINJr2r/exec",
+      {
+        method: "POST",
+        body: JSON.stringify(data),
+        headers: { "Content-Type": "application/json" },
+      }
+    );
+
+    if (response.ok) {
+      // 3️⃣ clear form & show thank you
+      form.reset();
+      statusMsg.textContent = "✨ Thank you! You’re on the waitlist.";
+      submitBtn.textContent = "Submitted";
+      submitBtn.style.backgroundColor = "#6b8e23";
+    } else {
+      throw new Error("Network response was not ok");
+    }
+  } catch (error) {
+    console.error("Submission failed:", error);
+    statusMsg.textContent = "⚠️ Something went wrong. Please try again later.";
+    submitBtn.textContent = "Retry";
+  } finally {
+    // 4️⃣ allow resubmission after short delay
+    setTimeout(() => {
+      submitBtn.disabled = false;
+      if (submitBtn.textContent === "Submitted") {
+        submitBtn.textContent = "Join the Waitlist";
+      }
+    }, 3000);
+  }
 });
