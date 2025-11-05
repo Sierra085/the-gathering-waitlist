@@ -72,22 +72,19 @@
       <form id="waitlistForm">
         <div class="question active" data-step="1">
           <h2>Join the Waitlist by introducing Yourself!</h2>
-          <input type="text" 
-           name="name" 
-           placeholder="Enter your name"
-           required />
+          <input type="text" name="name" placeholder="Enter your name" required />
           <button type="button" onclick="nextQuestion()">Next</button>
         </div>
 
         <div class="question" data-step="2">
           <h2>How old are you?</h2>
-          <input type="number" name="age" min="16" />
+          <input type="number" name="age" min="16" placeholder="Enter your Age"/>
           <button type="button" onclick="nextQuestion()">Next</button>
         </div>
 
         <div class="question" data-step="3">
           <h2>Where are you from?</h2>
-          <input type="text" name="country" />
+          <input type="text" name="country" placeholder="Enter your Country"/>
           <button type="button" onclick="nextQuestion()">Next</button>
         </div>
 
@@ -141,7 +138,7 @@
 
         <div class="question" data-step="11">
           <h2>How much would you pay monthly (local currency)?</h2>
-          <input type="text" name="pricing" placeholder="e.g. 10 USD" />
+          <input type="text" name="pricing" placeholder="e.g. 10 SGD" />
           <button type="button" onclick="nextQuestion()">Next</button>
         </div>
 
