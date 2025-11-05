@@ -1,3 +1,8 @@
+function doGet() {
+  return ContentService.createTextOutput("✅ The Gathering Waitlist endpoint is online.").setMimeType(ContentService.MimeType.TEXT);
+}
+
+
 document.addEventListener("DOMContentLoaded", () => {
 
   // smooth scroll from any CTA button
