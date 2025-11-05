@@ -16,6 +16,23 @@ function nextQuestion() {
     currentStep++;
     questions[currentStep - 1].classList.add("active");
     updateProgress();
+    // allow pressing Enter to go to the next question
+document.addEventListener("keydown", (e) => {
+  // only trigger if an input or select is focused
+  const active = document.activeElement;
+  if (
+    (active.tagName === "INPUT" || active.tagName === "SELECT" || active.tagName === "TEXTAREA") &&
+    e.key === "Enter"
+  ) {
+    e.preventDefault();
+    // don't trigger on submit button
+    const current = document.querySelector(".question.active");
+    const btn = current.querySelector("button[type='button']");
+    if (btn) btn.click();
+  }
+  if (!questions[currentStep - 1]) return;
+});
+
   }
 }
 
@@ -27,10 +44,27 @@ function updateProgress() {
 function handleExperience(select) {
   const value = select.value;
   const details = document.getElementById("experienceDetails");
+  const current = document.querySelector(".question.active");
+
+  // always clear any visible extra question first
+  details.style.display = "none";
+  details.classList.remove("active");
+
   if (value === "2" || value === "3") {
+    // show the details question and move focus there
+    current.classList.remove("active");
     details.style.display = "flex";
-  } else {
-    details.style.display = "none";
+    details.classList.add("active");
+    currentStep = parseInt(details.dataset.step);
+    updateProgress();
+  } else if (value === "0" || value === "1") {
+    // skip the details question and jump ahead
+    current.classList.remove("active");
+    currentStep += 2; // move two steps forward to next logical question
+    if (questions[currentStep - 1]) {
+      questions[currentStep - 1].classList.add("active");
+      updateProgress();
+    }
   }
 }
 
