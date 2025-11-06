@@ -143,4 +143,26 @@ document.addEventListener("DOMContentLoaded", () => {
       }, 3000);
     }
   });
+  // smooth scroll through sections with each scroll "step"
+const sections = ["#hero", "#story", "#waitlist"];
+let currentSection = 0;
+let isScrolling = false;
+
+window.addEventListener("wheel", (e) => {
+  if (isScrolling) return; // prevent rapid-fire
+  isScrolling = true;
+
+  if (e.deltaY > 0 && currentSection < sections.length - 1) {
+    currentSection++;
+  } else if (e.deltaY < 0 && currentSection > 0) {
+    currentSection--;
+  }
+
+  document.querySelector(sections[currentSection]).scrollIntoView({
+    behavior: "smooth",
+  });
+
+  setTimeout(() => (isScrolling = false), 800);
+});
+
 });

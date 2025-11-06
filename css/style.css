@@ -20,8 +20,9 @@ body {
 
 /* =============== HERO SECTION =============== */
 #hero {
+  position: relative;
   height: 100vh;
-  background: radial-gradient(circle at center, #d7c4a3, #a67b5b); /* warm clay-brown gradient */
+  background: url("../assets/Homepage2.jpg") center center / cover no-repeat;
   color: white;
   display: flex;
   flex-direction: column;
@@ -31,47 +32,16 @@ body {
   padding: 0 1rem;
 }
 
-
-#hero .logo {
-  width: min(80vw, 900px); /* fills most of screen but responsive */
-  max-height: 60vh;
-  object-fit: contain;
-  margin-bottom: 2rem;
-  transition: transform 0.6s ease;
+#hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45); /* subtle dark overlay for text readability */
 }
 
-#hero .logo:hover {
-  transform: scale(1.03); /* tiny hover lift for fun */
-}
-
-#hero h1 {
-  font-size: 2.5rem;
-  margin-bottom: 0.5rem;
-}
-
-#hero .tagline {
-  max-width: 900px;
-  margin: 1rem auto 1.5rem auto;
-  text-align: center;
-  font-size: 1.1rem;
-  line-height: 1.6;
-  word-break: keep-all;
-}
-
-
-.cta-btn {
-  background: white;
-  color: var(--accent);
-  border: none;
-  border-radius: 8px;
-  padding: 0.8rem 1.6rem;
-  font-size: 1rem;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-.cta-btn:hover {
-  background: var(--light);
-  color: var(--text);
+#hero .hero-content {
+  position: relative;
+  z-index: 1;
 }
 
 .scroll-hint {
@@ -79,19 +49,16 @@ body {
   bottom: 2rem;
   font-size: 1.5rem;
   animation: bounce 1.5s infinite;
-}
-
-@keyframes bounce {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(6px); }
+  z-index: 2;
 }
 
 /* =============== STORY SECTION =============== */
 #story {
   background: #faf6ef;
-  padding: 6rem 2rem;
+  padding: 5rem 2rem;
   display: flex;
   justify-content: center;
+  scroll-margin-top: 4rem;
 }
 
 #story ul {
@@ -152,6 +119,7 @@ body {
   padding: 4rem 1rem;
   display: flex;
   justify-content: center;
+  scroll-margin-top: 4rem;
 }
 
 .container {
