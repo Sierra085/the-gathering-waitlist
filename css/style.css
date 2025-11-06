@@ -18,30 +18,56 @@ body {
   line-height: 1.6;
 }
 
-/* =============== HERO SECTION =============== */
+/* =============== HERO SECTION FIXED =============== */
 #hero {
   position: relative;
   height: 100vh;
   background: url("../assets/Homepage2.jpg") center center / cover no-repeat;
-  color: white;
+  color: #faf6ef;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   text-align: center;
   padding: 0 1rem;
+  overflow: hidden;
 }
 
 #hero::after {
   content: "";
   position: absolute;
   inset: 0;
-  background: rgba(0, 0, 0, 0.45); /* subtle dark overlay for text readability */
+  background: rgba(0, 0, 0, 0.55); /* stronger dark overlay for text clarity */
+  z-index: 0;
+  backdrop-filter: blur(2px); /* subtle focus effect */
 }
 
-#hero .hero-content {
+.hero-content {
   position: relative;
   z-index: 1;
+  max-width: 900px;
+}
+
+#hero .logo {
+  width: min(80vw, 900px);
+  max-height: 50vh;
+  object-fit: contain;
+  margin-bottom: 2rem;
+}
+
+#hero h1 {
+  font-size: 2.8rem;
+  margin-bottom: 0.5rem;
+  color: #faf6ef;
+}
+
+#hero .tagline {
+  max-width: 700px;
+  margin: 1rem auto 1.5rem;
+  font-size: 1.2rem;
+  line-height: 1.7;
+  color: #f7f3eb;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
 }
 
 .scroll-hint {
@@ -50,15 +76,17 @@ body {
   font-size: 1.5rem;
   animation: bounce 1.5s infinite;
   z-index: 2;
+  color: #faf6ef;
 }
+
 
 /* =============== STORY SECTION =============== */
 #story {
   background: #faf6ef;
-  padding: 5rem 2rem;
+  padding: 6rem 2rem 4rem;
   display: flex;
   justify-content: center;
-  scroll-margin-top: 4rem;
+  scroll-margin-top: 5rem;
 }
 
 #story ul {
@@ -116,10 +144,10 @@ body {
 /* =============== WAITLIST SECTION (existing form) =============== */
 #waitlist {
   background: var(--bg);
-  padding: 4rem 1rem;
+  padding: 4rem 1rem 6rem;
   display: flex;
   justify-content: center;
-  scroll-margin-top: 4rem;
+  scroll-margin-top: 5rem;
 }
 
 .container {
@@ -203,4 +231,14 @@ footer {
 @keyframes fadeIn {
   from { opacity: 0; }
   to { opacity: 1; }
+}
+
+section {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s ease-out;
+}
+section.visible {
+  opacity: 1;
+  transform: translateY(0);
 }
