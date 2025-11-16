@@ -170,6 +170,124 @@ body {
 }
 
 
+/* =============== STORY PAGES (1, 2, 3) =============== */
+.story-page {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 4rem 2rem;
+  background: #a89080;
+}
+
+.story-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  max-width: 1400px;
+  width: 100%;
+  align-items: stretch;
+}
+
+.story-text-column {
+  background: #a89080;
+  color: #ffffff;
+  padding: 3rem 4rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  font-size: 1.1rem;
+  line-height: 1.8;
+}
+
+.story-text-column h2 {
+  font-size: 2.2rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+  line-height: 1.3;
+}
+
+.story-text-column p {
+  margin-bottom: 1.5rem;
+}
+
+.story-text-column .highlight-text {
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+}
+
+.story-text-column .quote {
+  font-style: italic;
+  font-size: 1rem;
+  margin: 2rem 0;
+  padding-left: 1rem;
+  border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.story-text-column .closing-text {
+  font-size: 1rem;
+  margin-top: 2rem;
+  text-align: center;
+  font-weight: 400;
+}
+
+.story-image-column {
+  background: #a89080;
+  display: flex;
+  align-items: stretch;
+  overflow: hidden;
+}
+
+.story-image-column img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Story 2 - single column text with image on right */
+#story2 .story-text-column {
+  font-size: 1.2rem;
+}
+
+/* Story 3 - image on left, text on right */
+#story3 .story-content {
+  grid-template-columns: 1fr 1fr;
+}
+
+/* Responsive adjustments */
+@media (max-width: 900px) {
+  .story-content {
+    grid-template-columns: 1fr;
+  }
+  
+  .story-text-column {
+    padding: 2rem;
+  }
+  
+  .story-image-column {
+    min-height: 50vh;
+  }
+  
+  #story3 .story-content {
+    grid-template-columns: 1fr;
+  }
+  
+  /* Reverse order on mobile for story 3 so image appears first */
+  #story3 .story-image-column {
+    order: -1;
+  }
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(10px); }
+}
+
+
 /* =============== WAITLIST SECTION (existing form) =============== */
 #waitlist {
   background: var(--bg);
