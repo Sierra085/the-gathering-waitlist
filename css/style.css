@@ -188,6 +188,34 @@ h1, h2, h3, h4, h5, h6 {
   align-items: center;
   padding: 4rem 2rem;
   background: #a89080;
+  scroll-snap-align: start;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-snap-type: y mandatory;
+}
+
+body {
+  font-family: var(--body-font);
+  margin: 0;
+  background-color: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+}
+
+section {
+  scroll-snap-align: start;
+}
+
+/* Story 2 - lighter background */
+#story2 {
+  background: #b8a090;
+}
+
+/* Story pages scroll positioning */
+#story1, #story3 {
+  background: #a89080;
 }
 
 .story-content {
@@ -235,11 +263,19 @@ h1, h2, h3, h4, h5, h6 {
   border-left: 3px solid rgba(255, 255, 255, 0.4);
 }
 
-.story-text-column .closing-text {
+.story-page .closing-text {
   font-size: 1rem;
   margin-top: 2rem;
+  margin-bottom: 1rem;
   text-align: center;
   font-weight: 400;
+  color: #ffffff;
+  position: relative;
+  z-index: 1;
+}
+
+.story-text-column .closing-text {
+  display: none;
 }
 
 .story-image-column {
@@ -379,11 +415,12 @@ h1, h2, h3, h4, h5, h6 {
 
 /* =============== WAITLIST SECTION (existing form) =============== */
 #waitlist {
-  background: var(--bg);
+  background: #b8a090;
   padding: 4rem 1rem 6rem;
   display: flex;
   justify-content: center;
   scroll-margin-top: 5rem;
+  scroll-snap-align: start;
 }
 
 .container {
