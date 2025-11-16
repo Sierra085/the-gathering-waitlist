@@ -87,9 +87,15 @@ document.addEventListener("DOMContentLoaded", () => {
   document.getElementById("waitlistForm").addEventListener("submit", async (e) => {
     e.preventDefault();
     const form = e.target;
-    const data = Object.fromEntries(new FormData(form).entries());
     const submitBtn = form.querySelector('button[type="submit"]');
     const current = document.querySelector(".question.active");
+    
+    // Check if checkbox is checked
+    const checkbox = form.querySelector('input[name="marketing_consent"]');
+    if (checkbox && !checkbox.checked) {
+      alert("Please agree to the terms by checking the box.");
+      return;
+    }
 
     // 1️⃣ disable button + show status
     submitBtn.disabled = true;
@@ -107,18 +113,12 @@ document.addEventListener("DOMContentLoaded", () => {
     current.appendChild(statusMsg);
 
     try {
-      // ✅ Use FormData instead of JSON for best compatibility
-      const formData = new FormData();
-      for (const key in data) {
-        formData.append(key, data[key]);
-      }
+      // ✅ Use FormData from the form directly
+      const formData = new FormData(form);
       
-      // Ensure checkbox value is included properly
-      const checkbox = form.querySelector('input[name="marketing_consent"]');
+      // Ensure checkbox value is properly formatted
       if (checkbox && checkbox.checked) {
         formData.set('marketing_consent', 'Yes');
-      } else {
-        formData.set('marketing_consent', 'No');
       }
 
       const response = await fetch(
@@ -129,8 +129,10 @@ document.addEventListener("DOMContentLoaded", () => {
         }
       );
 
+      const result = await response.text();
+      console.log("Server response:", result);
+
       if (response.ok) {
-        form.reset();
         statusMsg.textContent = "✨ Thank you! You're on the waitlist.";
         submitBtn.textContent = "Submitted";
         submitBtn.style.backgroundColor = "#6b8e23";
@@ -152,14 +154,7 @@ document.addEventListener("DOMContentLoaded", () => {
       console.error("Submission failed:", error);
       statusMsg.textContent = "⚠️ Something went wrong. Please try again later.";
       submitBtn.textContent = "Retry";
-    } finally {
-      // 4️⃣ allow resubmission after short delay
-      setTimeout(() => {
-        submitBtn.disabled = false;
-        if (submitBtn.textContent === "Submitted") {
-          submitBtn.textContent = "Join the Waitlist";
-        }
-      }, 3000);
+      submitBtn.disabled = false;
     }
   });
   
