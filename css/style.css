@@ -1,9 +1,13 @@
 /* =============== GLOBAL STYLES =============== */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+
 :root {
   --bg: #faf6ef;
   --text: #3b2f2f;
   --accent: #a67b5b;
   --light: #e8dcc6;
+  --header-font: 'TT Ramillas', serif;
+  --body-font: 'Poppins', sans-serif;
 }
 
 html {
@@ -11,11 +15,15 @@ html {
 }
 
 body {
-  font-family: "Poppins", sans-serif;
+  font-family: var(--body-font);
   margin: 0;
   background-color: var(--bg);
   color: var(--text);
   line-height: 1.6;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--header-font);
 }
 
 /* =============== HERO SECTION FIXED =============== */
@@ -285,6 +293,87 @@ body {
 @keyframes bounce {
   0%, 100% { transform: translateY(0); }
   50% { transform: translateY(10px); }
+}
+
+/* =============== STORY 4 - FEATURES PAGE =============== */
+#story4 {
+  background: #1a1a1a;
+  color: #ffffff;
+  padding: 4rem 2rem 6rem;
+}
+
+.story4-header {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.story4-logo {
+  margin-bottom: 1.5rem;
+}
+
+.story4-logo img {
+  width: 80px;
+  height: auto;
+}
+
+.story4-header h1 {
+  font-size: 3rem;
+  font-weight: 400;
+  letter-spacing: 2px;
+  margin: 0;
+}
+
+.features-grid {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 3rem;
+  padding: 0 2rem;
+}
+
+.feature-card {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.feature-image {
+  border-radius: 12px;
+  overflow: hidden;
+  aspect-ratio: 4/3;
+}
+
+.feature-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.feature-content h3 {
+  font-size: 1.4rem;
+  font-weight: 600;
+  margin-bottom: 0.8rem;
+  line-height: 1.3;
+}
+
+.feature-content p {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #e0e0e0;
+  font-weight: 300;
+}
+
+@media (max-width: 768px) {
+  .features-grid {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+  
+  .story4-header h1 {
+    font-size: 2.2rem;
+  }
 }
 
 
