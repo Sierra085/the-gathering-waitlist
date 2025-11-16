@@ -249,6 +249,10 @@ section {
   margin-bottom: 1.5rem;
 }
 
+.story-text-column p:not(.highlight-text):not(.quote):not(.closing-text) {
+  margin-bottom: 1rem;
+}
+
 .story-text-column .highlight-text {
   font-size: 1.3rem;
   font-weight: 600;
@@ -258,9 +262,12 @@ section {
 .story-text-column .quote {
   font-style: italic;
   font-size: 1rem;
-  margin: 2rem 0;
-  padding-left: 1rem;
+  margin: 1.5rem 0;
+  padding: 1rem 1.5rem;
+  padding-left: 1.5rem;
   border-left: 3px solid rgba(255, 255, 255, 0.4);
+  background: rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
 }
 
 .story-page .closing-text {

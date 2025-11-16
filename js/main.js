@@ -112,6 +112,14 @@ document.addEventListener("DOMContentLoaded", () => {
       for (const key in data) {
         formData.append(key, data[key]);
       }
+      
+      // Ensure checkbox value is included properly
+      const checkbox = form.querySelector('input[name="marketing_consent"]');
+      if (checkbox && checkbox.checked) {
+        formData.set('marketing_consent', 'Yes');
+      } else {
+        formData.set('marketing_consent', 'No');
+      }
 
       const response = await fetch(
         "https://script.google.com/macros/s/AKfycbwRnpf4vDhvsywhLg4NRRwCfg-TMMChvx3N5A8RUg2YvtbSeAVRGGOfGa7H0SINJr2r/exec",
@@ -123,9 +131,20 @@ document.addEventListener("DOMContentLoaded", () => {
 
       if (response.ok) {
         form.reset();
-        statusMsg.textContent = "✨ Thank you! You’re on the waitlist.";
+        statusMsg.textContent = "✨ Thank you! You're on the waitlist.";
         submitBtn.textContent = "Submitted";
         submitBtn.style.backgroundColor = "#6b8e23";
+        
+        // Show thank you page
+        setTimeout(() => {
+          current.classList.remove("active");
+          const thankYou = document.getElementById("thankYou");
+          if (thankYou) {
+            thankYou.classList.add("active");
+            currentStep = parseInt(thankYou.dataset.step);
+            updateProgress();
+          }
+        }, 1500);
       } else {
         throw new Error("Network response was not ok");
       }
@@ -143,29 +162,30 @@ document.addEventListener("DOMContentLoaded", () => {
       }, 3000);
     }
   });
+  
   // smooth scroll through sections with each scroll "step"
-const sections = ["#hero", "#story", "#waitlist"];
-let currentSection = 0;
-let isScrolling = false;
+  const sections = ["#hero", "#story1", "#story2", "#story3", "#waitlist"];
+  let currentSection = 0;
+  let isScrolling = false;
 
-window.addEventListener("wheel", (e) => {
-  if (isScrolling) return; // prevent rapid-fire
-  isScrolling = true;
+  window.addEventListener("wheel", (e) => {
+    if (isScrolling) return; // prevent rapid-fire
+    isScrolling = true;
 
-  if (e.deltaY > 0 && currentSection < sections.length - 1) {
-    currentSection++;
-  } else if (e.deltaY < 0 && currentSection > 0) {
-    currentSection--;
-  }
+    if (e.deltaY > 0 && currentSection < sections.length - 1) {
+      currentSection++;
+    } else if (e.deltaY < 0 && currentSection > 0) {
+      currentSection--;
+    }
 
-  document.querySelector(sections[currentSection]).scrollIntoView({
-    behavior: "smooth",
+    document.querySelector(sections[currentSection]).scrollIntoView({
+      behavior: "smooth",
+    });
+
+    setTimeout(() => (isScrolling = false), 1000);
   });
 
-  setTimeout(() => (isScrolling = false), 800);
-});
-
-// scroll fade reveal
+  // scroll fade reveal
 const observer = new IntersectionObserver((entries) => {
   entries.forEach((entry) => {
     if (entry.isIntersecting) {
