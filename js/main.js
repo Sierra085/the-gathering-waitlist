@@ -89,13 +89,6 @@ document.addEventListener("DOMContentLoaded", () => {
     const form = e.target;
     const submitBtn = form.querySelector('button[type="submit"]');
     const current = document.querySelector(".question.active");
-    
-    // Check if checkbox is checked
-    const checkbox = form.querySelector('input[name="marketing_consent"]');
-    if (checkbox && !checkbox.checked) {
-      alert("Please agree to the terms by checking the box.");
-      return;
-    }
 
     // 1️⃣ disable button + show status
     submitBtn.disabled = true;
@@ -115,11 +108,6 @@ document.addEventListener("DOMContentLoaded", () => {
     try {
       // ✅ Use FormData from the form directly
       const formData = new FormData(form);
-      
-      // Ensure checkbox value is properly formatted
-      if (checkbox && checkbox.checked) {
-        formData.set('marketing_consent', 'Yes');
-      }
 
       const response = await fetch(
         "https://script.google.com/macros/s/AKfycbwRnpf4vDhvsywhLg4NRRwCfg-TMMChvx3N5A8RUg2YvtbSeAVRGGOfGa7H0SINJr2r/exec",

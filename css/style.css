@@ -489,6 +489,16 @@ button:hover {
   color: var(--text);
 }
 
+.fine-print {
+  font-family: var(--header-font);
+  font-size: 0.75rem;
+  line-height: 1.5;
+  color: #666;
+  text-align: left;
+  margin: 1rem 0;
+  padding: 0.5rem;
+}
+
 .consent-container {
   margin: 1.5rem 0;
   text-align: left;
