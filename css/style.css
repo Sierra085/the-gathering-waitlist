@@ -266,7 +266,7 @@ section {
 .story-page .closing-text {
   font-size: 1rem;
   margin-top: 2rem;
-  margin-bottom: 1rem;
+  margin-bottom: 0.3rem;
   text-align: center;
   font-weight: 400;
   color: #ffffff;
