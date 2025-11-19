@@ -188,7 +188,6 @@ h1, h2, h3, h4, h5, h6 {
   align-items: center;
   padding: 4rem 2rem;
   background: #a89080;
-  scroll-snap-align: start;
 }
 
 html {
@@ -201,11 +200,6 @@ body {
   background-color: var(--bg);
   color: var(--text);
   line-height: 1.6;
-  scroll-snap-type: y mandatory;
-}
-
-section {
-  scroll-snap-align: start;
 }
 
 /* Story 2 - lighter background */
@@ -213,12 +207,12 @@ section {
   background: #b8a090;
 }
 
-/* Story pages scroll positioning */
+/* Story pages positioning */
 #story1, #story3 {
   background: #a89080;
 }
 
-.story-content {
+.story-page {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 0;
@@ -427,7 +421,6 @@ section {
   display: flex;
   justify-content: center;
   scroll-margin-top: 5rem;
-  scroll-snap-align: start;
 }
 
 .container {

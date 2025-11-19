@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // smooth scroll from any CTA button
   document.querySelectorAll(".cta-btn").forEach(btn => {
     btn.addEventListener("click", () => {
-      document.querySelector("#waitlist").scrollIntoView({ behavior: "smooth" });
+      window.location.href = "survey.html";
     });
   });
 
@@ -145,39 +145,17 @@ document.addEventListener("DOMContentLoaded", () => {
       submitBtn.disabled = false;
     }
   });
-  
-  // smooth scroll through sections with each scroll "step"
-  const sections = ["#hero", "#story1", "#story2", "#story3", "#waitlist"];
-  let currentSection = 0;
-  let isScrolling = false;
-
-  window.addEventListener("wheel", (e) => {
-    if (isScrolling) return; // prevent rapid-fire
-    isScrolling = true;
-
-    if (e.deltaY > 0 && currentSection < sections.length - 1) {
-      currentSection++;
-    } else if (e.deltaY < 0 && currentSection > 0) {
-      currentSection--;
-    }
-
-    document.querySelector(sections[currentSection]).scrollIntoView({
-      behavior: "smooth",
-    });
-
-    setTimeout(() => (isScrolling = false), 1000);
-  });
 
   // scroll fade reveal
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach((entry) => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add("visible");
-    }
-  });
-}, { threshold: 0.2 });
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("visible");
+      }
+    });
+  }, { threshold: 0.2 });
 
-document.querySelectorAll("section").forEach((sec) => observer.observe(sec));
+  document.querySelectorAll("section").forEach((sec) => observer.observe(sec));
 
 
 });

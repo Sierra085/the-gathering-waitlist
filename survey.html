@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Join The Gathering — Survey</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/survey.css" />
+</head>
+
+<body>
+  <section id="survey-page">
+    <div class="survey-container">
+      <div class="survey-header">
+        <img src="assets/BrandmarkMidnightBlack.png" alt="The Gathering Logo" class="survey-logo" />
+        <h1>Join the Waitlist</h1>
+        <p class="survey-intro">Help us create a platform that best serves your needs.</p>
+      </div>
+
+      <div class="progress"><div class="progress-bar" id="progress"></div></div>
+
+      <form id="surveyForm">
+        <!-- Questions will go here - paste your questions below -->
+        <div class="question active" data-step="1">
+          <h2>What's your name?</h2>
+          <input type="text" name="name" placeholder="Enter your name" required />
+          <button type="button" onclick="nextQuestion()">Next</button>
+        </div>
+
+        <!-- Add more questions here -->
+
+        <div class="question" data-step="2" id="thankYou">
+          <h2>🎉 Thank you!</h2>
+          <p>You're on the waitlist — we'll reach out soon.</p>
+          <a href="index.html" class="back-home-btn">Back to Home</a>
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <script src="js/survey.js"></script>
+</body>
+</html>
