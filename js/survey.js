@@ -4,6 +4,13 @@ document.addEventListener("DOMContentLoaded", () => {
   let currentStep = 1;
   const questions = document.querySelectorAll(".question");
   const progressBar = document.getElementById("progress");
+  const currentStepSpan = document.getElementById("currentStep");
+  const totalStepsSpan = document.getElementById("totalSteps");
+  
+  // Set total steps
+  if (totalStepsSpan) {
+    totalStepsSpan.textContent = questions.length - 1; // Exclude thank you page
+  }
 
   // expose nextQuestion globally
   window.nextQuestion = function () {
@@ -14,7 +21,14 @@ document.addEventListener("DOMContentLoaded", () => {
     let allFilled = true;
     
     requiredInputs.forEach(input => {
-      if (!input.value.trim()) {
+      if (input.type === 'radio' || input.type === 'checkbox') {
+        // For radio/checkbox, check if at least one in the group is checked
+        const name = input.name;
+        const checked = current.querySelector(`input[name="${name}"]:checked`);
+        if (!checked && input.hasAttribute('required')) {
+          allFilled = false;
+        }
+      } else if (!input.value.trim()) {
         allFilled = false;
         input.style.borderColor = '#ff6b6b';
       } else {
@@ -23,7 +37,21 @@ document.addEventListener("DOMContentLoaded", () => {
     });
     
     if (!allFilled) {
+      alert('Please fill in all required fields before continuing.');
       return;
+    }
+    
+    // Handle conditional navigation for co-working question
+    if (current.querySelector('input[name="knows_coworking"]')) {
+      const knowsCoworking = current.querySelector('input[name="knows_coworking"]:checked');
+      if (knowsCoworking && knowsCoworking.value === 'No') {
+        // Skip to Section 4 (question about worries - step 18)
+        current.classList.remove("active");
+        currentStep = 18;
+        questions[currentStep - 1].classList.add("active");
+        updateProgress();
+        return;
+      }
     }
     
     if (currentStep < questions.length) {
@@ -32,13 +60,18 @@ document.addEventListener("DOMContentLoaded", () => {
       if (questions[currentStep - 1]) {
         questions[currentStep - 1].classList.add("active");
         updateProgress();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
       }
     }
   };
 
   function updateProgress() {
-    const percent = ((currentStep - 1) / (questions.length - 1)) * 100;
+    const totalQuestions = questions.length - 1; // Exclude thank you page
+    const percent = ((currentStep - 1) / totalQuestions) * 100;
     progressBar.style.width = percent + "%";
+    if (currentStepSpan) {
+      currentStepSpan.textContent = currentStep;
+    }
   }
 
   // Allow Enter key to act as "Next" or "Submit"
