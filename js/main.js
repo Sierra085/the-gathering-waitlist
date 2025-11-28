@@ -231,9 +231,9 @@ document.addEventListener("DOMContentLoaded", () => {
           const thankYou = document.getElementById("thankYou");
           if (thankYou) {
             thankYou.classList.add("active");
-            currentStep = 26;
-            updateProgress();
           }
+          currentStep = questions.length;
+          updateProgress();
         }, 1500);
       } else {
         throw new Error("Network response was not ok");
