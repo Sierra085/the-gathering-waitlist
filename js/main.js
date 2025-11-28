@@ -1,9 +1,13 @@
 document.addEventListener("DOMContentLoaded", () => {
 
-  // smooth scroll from any CTA button
+  // Smooth scroll from any CTA button to waitlist form
   document.querySelectorAll(".cta-btn").forEach(btn => {
-    btn.addEventListener("click", () => {
-      window.location.href = "survey.html";
+    btn.addEventListener("click", (e) => {
+      e.preventDefault();
+      const waitlistSection = document.getElementById("waitlist");
+      if (waitlistSection) {
+        waitlistSection.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
     });
   });
 
@@ -53,7 +57,7 @@ document.addEventListener("DOMContentLoaded", () => {
   let currentStep = 1;
   const questions = document.querySelectorAll(".question");
   const progressBar = document.getElementById("progress");
-  const totalSteps = 23; // Total steps excluding thank you page
+  const totalSteps = 24; // Total steps excluding thank you page
 
   // Expose nextQuestion globally
   window.nextQuestion = function () {
@@ -74,20 +78,20 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Virtual coworking branching logic
   window.branchYes = function () {
-    // If Yes, proceed to question 14 (understanding)
+    // If Yes, proceed to question 15 (understanding)
     setTimeout(() => {
       questions[currentStep - 1].classList.remove("active");
-      currentStep = 14;
+      currentStep = 15;
       questions[currentStep - 1].classList.add("active");
       updateProgress();
     }, 300);
   };
 
   window.branchNo = function () {
-    // If No, skip to question 19 (worries)
+    // If No, skip to question 20 (worries)
     setTimeout(() => {
       questions[currentStep - 1].classList.remove("active");
-      currentStep = 19;
+      currentStep = 20;
       questions[currentStep - 1].classList.add("active");
       updateProgress();
     }, 300);
@@ -188,7 +192,7 @@ document.addEventListener("DOMContentLoaded", () => {
           const thankYou = document.getElementById("thankYou");
           if (thankYou) {
             thankYou.classList.add("active");
-            currentStep = 24;
+            currentStep = 25;
             updateProgress();
           }
         }, 1500);
