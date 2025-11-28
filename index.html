@@ -127,14 +127,14 @@
 
         <div class="question" data-step="4">
           <h2>How old are you?</h2>
-          <input type="text" name="age" list="ageList" placeholder="Select or type your age" />
+          <input type="text" name="age" list="ageList" placeholder="Select or type your age" required />
           <datalist id="ageList"></datalist>
           <button type="button" onclick="nextQuestion()">Next</button>
         </div>
 
         <div class="question" data-step="5">
           <h2>What's your current working status / occupation?</h2>
-          <input type="text" name="occupation" list="occupationList" placeholder="Select or type" />
+          <input type="text" name="occupation" list="occupationList" placeholder="Select or type" required />
           <datalist id="occupationList">
             <option value="Student">
             <option value="Intern">
@@ -151,7 +151,7 @@
 
         <div class="question" data-step="6">
           <h2>Which country are you based in?</h2>
-          <input type="text" name="country" list="countryList" placeholder="Select or type your country" />
+          <input type="text" name="country" list="countryList" placeholder="Select or type your country" required />
           <datalist id="countryList"></datalist>
           <button type="button" onclick="nextQuestion()">Next</button>
         </div>
@@ -204,7 +204,7 @@
 
         <div class="question" data-step="10">
           <h2>Which of our primary features most interest you — and why?</h2>
-          <textarea name="primary_features_why" placeholder="Tell us what interests you and why..."></textarea>
+          <textarea name="primary_features_why" placeholder="Tell us what interests you and why..." required></textarea>
           <button type="button" onclick="nextQuestion()">Next</button>
         </div>
 
@@ -216,7 +216,7 @@
 
         <div class="question" data-step="12">
           <h2>What features would you like to see that aren't here — and why?</h2>
-          <textarea name="feature_suggestions" placeholder="Share your ideas..."></textarea>
+          <textarea name="feature_suggestions" placeholder="Share your ideas..." required></textarea>
           <button type="button" onclick="nextQuestion()">Next</button>
         </div>
 
@@ -242,25 +242,25 @@
 
         <div class="question" data-step="15">
           <h2>Describe your understanding</h2>
-          <textarea name="cw_understanding" placeholder="What do you know about virtual co-working?"></textarea>
+          <textarea name="cw_understanding" placeholder="What do you know about virtual co-working?" required></textarea>
           <button type="button" onclick="nextQuestion()">Next</button>
         </div>
 
         <div class="question" data-step="16">
           <h2>Where have you experienced virtual co-working before?</h2>
-          <textarea name="cw_where" placeholder="List platforms or communities..."></textarea>
+          <textarea name="cw_where" placeholder="List platforms or communities..." required></textarea>
           <button type="button" onclick="nextQuestion()">Next</button>
         </div>
 
         <div class="question" data-step="17">
           <h2>What did you like?</h2>
-          <textarea name="cw_like" placeholder="Share what worked well for you..."></textarea>
+          <textarea name="cw_like" placeholder="Share what worked well for you..." required></textarea>
           <button type="button" onclick="nextQuestion()">Next</button>
         </div>
 
         <div class="question" data-step="18">
           <h2>What did you find lacking?</h2>
-          <textarea name="cw_lacking" placeholder="What could have been better?"></textarea>
+          <textarea name="cw_lacking" placeholder="What could have been better?" required></textarea>
           <button type="button" onclick="nextQuestion()">Next</button>
         </div>
 
@@ -277,13 +277,13 @@
         
         <div class="question" data-step="20">
           <h2>List your worries entering the new year.</h2>
-          <textarea name="worries" placeholder="Share what's on your mind..."></textarea>
+          <textarea name="worries" placeholder="Share what's on your mind..." required></textarea>
           <button type="button" onclick="nextQuestion()">Next</button>
         </div>
 
         <div class="question" data-step="21">
           <h2>List your goals entering the new year.</h2>
-          <textarea name="goals" placeholder="What do you want to achieve?"></textarea>
+          <textarea name="goals" placeholder="What do you want to achieve?" required></textarea>
           <button type="button" onclick="nextQuestion()">Next</button>
         </div>
 

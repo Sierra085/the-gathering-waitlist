@@ -61,6 +61,34 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Expose nextQuestion globally
   window.nextQuestion = function () {
+    // Validate current question before proceeding
+    const current = document.querySelector(".question.active");
+    if (current) {
+      const currentStepNum = parseInt(current.dataset.step);
+      
+      // Validate checkbox groups (Q8, Q9, Q22 - steps with checkbox requirements)
+      if (currentStepNum === 8 || currentStepNum === 9 || currentStepNum === 22) {
+        const checkboxGroup = current.querySelector('.checkbox-group');
+        if (checkboxGroup) {
+          const checked = checkboxGroup.querySelectorAll('input[type="checkbox"]:checked');
+          if (checked.length === 0) {
+            alert('Please select at least one option before proceeding.');
+            return;
+          }
+        }
+      }
+      
+      // Validate required fields
+      const requiredInputs = current.querySelectorAll('input[required], textarea[required], select[required]');
+      for (let input of requiredInputs) {
+        if (!input.value.trim()) {
+          alert('Please fill in the required field before proceeding.');
+          input.focus();
+          return;
+        }
+      }
+    }
+    
     if (currentStep < questions.length) {
       questions[currentStep - 1].classList.remove("active");
       currentStep++;
@@ -79,6 +107,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // Virtual coworking branching logic
   window.branchYes = function () {
     // If Yes, proceed to question 15 (understanding)
+    // Enable required on questions 15-18
     setTimeout(() => {
       questions[currentStep - 1].classList.remove("active");
       currentStep = 15;
@@ -89,6 +118,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
   window.branchNo = function () {
     // If No, skip to question 20 (worries)
+    // Disable required on questions 15-18 since they won't be shown
+    document.querySelector('[name="cw_understanding"]').removeAttribute('required');
+    document.querySelector('[name="cw_where"]').removeAttribute('required');
+    document.querySelector('[name="cw_like"]').removeAttribute('required');
+    document.querySelector('[name="cw_lacking"]').removeAttribute('required');
+    
     setTimeout(() => {
       questions[currentStep - 1].classList.remove("active");
       currentStep = 20;
