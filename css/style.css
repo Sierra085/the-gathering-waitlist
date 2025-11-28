@@ -212,7 +212,7 @@ body {
   background: #a89080;
 }
 
-.story-page {
+.story-content {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 0;
