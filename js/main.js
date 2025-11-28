@@ -7,12 +7,55 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  // progressive form logic
+  // Populate age datalist (18-80)
+  const ageList = document.getElementById("ageList");
+  if (ageList) {
+    for (let i = 18; i <= 80; i++) {
+      const option = document.createElement("option");
+      option.value = i;
+      ageList.appendChild(option);
+    }
+  }
+
+  // Populate country datalist
+  const countryList = document.getElementById("countryList");
+  if (countryList) {
+    const countries = [
+      "Afghanistan", "Albania", "Algeria", "Andorra", "Angola", "Antigua and Barbuda", "Argentina", "Armenia", "Australia", "Austria",
+      "Azerbaijan", "Bahamas", "Bahrain", "Bangladesh", "Barbados", "Belarus", "Belgium", "Belize", "Benin", "Bhutan",
+      "Bolivia", "Bosnia and Herzegovina", "Botswana", "Brazil", "Brunei", "Bulgaria", "Burkina Faso", "Burundi", "Cabo Verde", "Cambodia",
+      "Cameroon", "Canada", "Central African Republic", "Chad", "Chile", "China", "Colombia", "Comoros", "Congo", "Costa Rica",
+      "Croatia", "Cuba", "Cyprus", "Czech Republic", "Denmark", "Djibouti", "Dominica", "Dominican Republic", "Ecuador", "Egypt",
+      "El Salvador", "Equatorial Guinea", "Eritrea", "Estonia", "Eswatini", "Ethiopia", "Fiji", "Finland", "France", "Gabon",
+      "Gambia", "Georgia", "Germany", "Ghana", "Greece", "Grenada", "Guatemala", "Guinea", "Guinea-Bissau", "Guyana",
+      "Haiti", "Honduras", "Hungary", "Iceland", "India", "Indonesia", "Iran", "Iraq", "Ireland", "Israel",
+      "Italy", "Jamaica", "Japan", "Jordan", "Kazakhstan", "Kenya", "Kiribati", "Kosovo", "Kuwait", "Kyrgyzstan",
+      "Laos", "Latvia", "Lebanon", "Lesotho", "Liberia", "Libya", "Liechtenstein", "Lithuania", "Luxembourg", "Madagascar",
+      "Malawi", "Malaysia", "Maldives", "Mali", "Malta", "Marshall Islands", "Mauritania", "Mauritius", "Mexico", "Micronesia",
+      "Moldova", "Monaco", "Mongolia", "Montenegro", "Morocco", "Mozambique", "Myanmar", "Namibia", "Nauru", "Nepal",
+      "Netherlands", "New Zealand", "Nicaragua", "Niger", "Nigeria", "North Korea", "North Macedonia", "Norway", "Oman", "Pakistan",
+      "Palau", "Palestine", "Panama", "Papua New Guinea", "Paraguay", "Peru", "Philippines", "Poland", "Portugal", "Qatar",
+      "Romania", "Russia", "Rwanda", "Saint Kitts and Nevis", "Saint Lucia", "Saint Vincent and the Grenadines", "Samoa", "San Marino", "Sao Tome and Principe", "Saudi Arabia",
+      "Senegal", "Serbia", "Seychelles", "Sierra Leone", "Singapore", "Slovakia", "Slovenia", "Solomon Islands", "Somalia", "South Africa",
+      "South Korea", "South Sudan", "Spain", "Sri Lanka", "Sudan", "Suriname", "Sweden", "Switzerland", "Syria", "Taiwan",
+      "Tajikistan", "Tanzania", "Thailand", "Timor-Leste", "Togo", "Tonga", "Trinidad and Tobago", "Tunisia", "Turkey", "Turkmenistan",
+      "Tuvalu", "Uganda", "Ukraine", "United Arab Emirates", "United Kingdom", "United States", "Uruguay", "Uzbekistan", "Vanuatu", "Vatican City",
+      "Venezuela", "Vietnam", "Yemen", "Zambia", "Zimbabwe"
+    ];
+    countries.forEach(country => {
+      const option = document.createElement("option");
+      option.value = country;
+      countryList.appendChild(option);
+    });
+  }
+
+  // Progressive form logic
   let currentStep = 1;
   const questions = document.querySelectorAll(".question");
   const progressBar = document.getElementById("progress");
+  const totalSteps = 23; // Total steps excluding thank you page
 
-  // expose nextQuestion globally
+  // Expose nextQuestion globally
   window.nextQuestion = function () {
     if (currentStep < questions.length) {
       questions[currentStep - 1].classList.remove("active");
@@ -25,39 +68,52 @@ document.addEventListener("DOMContentLoaded", () => {
   };
 
   function updateProgress() {
-    const percent = ((currentStep - 1) / (questions.length - 1)) * 100;
+    const percent = ((currentStep - 1) / totalSteps) * 100;
     progressBar.style.width = percent + "%";
   }
 
-  // 🧠 Coworking experience logic (fixed)
-  window.handleExperience = function (select) {
-    const value = select.value;
-    const details = document.getElementById("experienceDetails");
-    const current = document.querySelector(".question.active");
-
-    // reset details visibility
-    details.style.display = "none";
-    details.classList.remove("active");
-
-    if (value === "2" || value === "3") {
-      // show the extra question
-      current.classList.remove("active");
-      details.style.display = "flex";
-      details.classList.add("active");
-      currentStep = parseInt(details.dataset.step);
+  // Virtual coworking branching logic
+  window.branchYes = function () {
+    // If Yes, proceed to question 14 (understanding)
+    setTimeout(() => {
+      questions[currentStep - 1].classList.remove("active");
+      currentStep = 14;
+      questions[currentStep - 1].classList.add("active");
       updateProgress();
-    } else if (value === "0" || value === "1") {
-      // skip ahead properly
-      current.classList.remove("active");
-      currentStep += 2; // move to the next relevant question
-      if (questions[currentStep - 1]) {
-        questions[currentStep - 1].classList.add("active");
-        updateProgress();
-      }
-    }
+    }, 300);
   };
 
-  // ⌨️ Allow Enter / Return to act as "Next" or "Submit"
+  window.branchNo = function () {
+    // If No, skip to question 19 (worries)
+    setTimeout(() => {
+      questions[currentStep - 1].classList.remove("active");
+      currentStep = 19;
+      questions[currentStep - 1].classList.add("active");
+      updateProgress();
+    }, 300);
+  };
+
+  // Checkbox limit (max 3 selections)
+  function limitCheckboxes(groupId, maxSelections) {
+    const group = document.getElementById(groupId);
+    if (!group) return;
+
+    const checkboxes = group.querySelectorAll('input[type="checkbox"]');
+    checkboxes.forEach(checkbox => {
+      checkbox.addEventListener("change", () => {
+        const checkedCount = group.querySelectorAll('input[type="checkbox"]:checked').length;
+        if (checkedCount > maxSelections) {
+          checkbox.checked = false;
+          alert(`You can select up to ${maxSelections} options only.`);
+        }
+      });
+    });
+  }
+
+  limitCheckboxes("needsGroup", 3);
+  limitCheckboxes("tasksGroup", 3);
+
+  // Allow Enter / Return to act as "Next" or "Submit"
   document.addEventListener("keydown", (e) => {
     const active = document.activeElement;
     if (!active) return;
@@ -83,14 +139,14 @@ document.addEventListener("DOMContentLoaded", () => {
     (submitBtn || nextBtn)?.click();
   });
 
-  // 🪄 Google Sheets submission with visual feedback inside the active card
+  // Google Sheets submission with visual feedback inside the active card
   document.getElementById("waitlistForm").addEventListener("submit", async (e) => {
     e.preventDefault();
     const form = e.target;
     const submitBtn = form.querySelector('button[type="submit"]');
     const current = document.querySelector(".question.active");
 
-    // 1️⃣ disable button + show status
+    // disable button + show status
     submitBtn.disabled = true;
     submitBtn.textContent = "Submitting...";
 
@@ -98,7 +154,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const oldMsg = current.querySelector("#statusMessage");
     if (oldMsg) oldMsg.remove();
 
-    // 2️⃣ show loading text inside active question
+    // show loading text inside active question
     const statusMsg = document.createElement("p");
     statusMsg.id = "statusMessage";
     statusMsg.textContent = "Sending your response, please wait...";
@@ -106,11 +162,12 @@ document.addEventListener("DOMContentLoaded", () => {
     current.appendChild(statusMsg);
 
     try {
-      // ✅ Use FormData from the form directly
+      // Use FormData from the form directly
       const formData = new FormData(form);
 
+      // YOUR ENDPOINT WILL GO HERE
       const response = await fetch(
-        "https://script.google.com/macros/s/AKfycbwRnpf4vDhvsywhLg4NRRwCfg-TMMChvx3N5A8RUg2YvtbSeAVRGGOfGa7H0SINJr2r/exec",
+        "YOUR_GOOGLE_SHEETS_ENDPOINT_URL",
         {
           method: "POST",
           body: formData
@@ -131,7 +188,7 @@ document.addEventListener("DOMContentLoaded", () => {
           const thankYou = document.getElementById("thankYou");
           if (thankYou) {
             thankYou.classList.add("active");
-            currentStep = parseInt(thankYou.dataset.step);
+            currentStep = 24;
             updateProgress();
           }
         }, 1500);
