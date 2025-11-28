@@ -57,34 +57,37 @@ document.addEventListener("DOMContentLoaded", () => {
   let currentStep = 1;
   const questions = document.querySelectorAll(".question");
   const progressBar = document.getElementById("progress");
-  const totalSteps = 24; // Total steps excluding thank you page
+  const totalSteps = 23; // Total question steps (excluding intro step 1 and thank you step 25)
 
   // Expose nextQuestion globally
   window.nextQuestion = function () {
-    // Validate current question before proceeding
+    // Validate current question before proceeding (skip intro screen at step 1)
     const current = document.querySelector(".question.active");
     if (current) {
       const currentStepNum = parseInt(current.dataset.step);
       
-      // Validate checkbox groups (Q8, Q9, Q22 - steps with checkbox requirements)
-      if (currentStepNum === 8 || currentStepNum === 9 || currentStepNum === 22) {
-        const checkboxGroup = current.querySelector('.checkbox-group');
-        if (checkboxGroup) {
-          const checked = checkboxGroup.querySelectorAll('input[type="checkbox"]:checked');
-          if (checked.length === 0) {
-            alert('Please select at least one option before proceeding.');
-            return;
+      // Skip validation for intro screen (step 1)
+      if (currentStepNum > 1) {
+        // Validate checkbox groups (Q9, Q10, Q23 - steps with checkbox requirements)
+        if (currentStepNum === 9 || currentStepNum === 10 || currentStepNum === 23) {
+          const checkboxGroup = current.querySelector('.checkbox-group');
+          if (checkboxGroup) {
+            const checked = checkboxGroup.querySelectorAll('input[type="checkbox"]:checked');
+            if (checked.length === 0) {
+              alert('Please select at least one option before proceeding.');
+              return;
+            }
           }
         }
-      }
-      
-      // Validate required fields
-      const requiredInputs = current.querySelectorAll('input[required], textarea[required], select[required]');
-      for (let input of requiredInputs) {
-        if (!input.value.trim()) {
-          alert('Please fill in the required field before proceeding.');
-          input.focus();
-          return;
+        
+        // Validate required fields
+        const requiredInputs = current.querySelectorAll('input[required], textarea[required], select[required]');
+        for (let input of requiredInputs) {
+          if (!input.value.trim()) {
+            alert('Please fill in the required field before proceeding.');
+            input.focus();
+            return;
+          }
         }
       }
     }
@@ -100,25 +103,26 @@ document.addEventListener("DOMContentLoaded", () => {
   };
 
   function updateProgress() {
-    const percent = ((currentStep - 1) / totalSteps) * 100;
+    // Start progress from step 2 (after intro screen)
+    const percent = currentStep === 1 ? 0 : ((currentStep - 2) / totalSteps) * 100;
     progressBar.style.width = percent + "%";
   }
 
   // Virtual coworking branching logic
   window.branchYes = function () {
-    // If Yes, proceed to question 15 (understanding)
-    // Enable required on questions 15-18
+    // If Yes, proceed to question 16 (understanding)
+    // Enable required on questions 16-19
     setTimeout(() => {
       questions[currentStep - 1].classList.remove("active");
-      currentStep = 15;
+      currentStep = 16;
       questions[currentStep - 1].classList.add("active");
       updateProgress();
     }, 300);
   };
 
   window.branchNo = function () {
-    // If No, skip to question 20 (worries)
-    // Disable required on questions 15-18 since they won't be shown
+    // If No, skip to question 21 (worries)
+    // Disable required on questions 16-19 since they won't be shown
     document.querySelector('[name="cw_understanding"]').removeAttribute('required');
     document.querySelector('[name="cw_where"]').removeAttribute('required');
     document.querySelector('[name="cw_like"]').removeAttribute('required');
@@ -126,7 +130,7 @@ document.addEventListener("DOMContentLoaded", () => {
     
     setTimeout(() => {
       questions[currentStep - 1].classList.remove("active");
-      currentStep = 20;
+      currentStep = 21;
       questions[currentStep - 1].classList.add("active");
       updateProgress();
     }, 300);
@@ -227,7 +231,7 @@ document.addEventListener("DOMContentLoaded", () => {
           const thankYou = document.getElementById("thankYou");
           if (thankYou) {
             thankYou.classList.add("active");
-            currentStep = 25;
+            currentStep = 26;
             updateProgress();
           }
         }, 1500);
