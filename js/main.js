@@ -210,7 +210,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       // YOUR ENDPOINT WILL GO HERE
       const response = await fetch(
-        "YOUR_GOOGLE_SHEETS_ENDPOINT_URL",
+        "https://script.google.com/macros/s/AKfycbx49s1kNk4C9Il_p_fZt8FjkaT3xesULBvcmaPvYqVl-thgCNobt4AnzncKCyhI5Wo/exec",
         {
           method: "POST",
           body: formData
