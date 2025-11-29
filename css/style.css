@@ -1,6 +1,49 @@
 /* =============== GLOBAL STYLES =============== */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
 
+/* =============== TT RAMILLAS FONT =============== */
+@font-face {
+  font-family: 'TT Ramillas';
+  src: url('../fonts/TT Ramillas Trial Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'TT Ramillas';
+  src: url('../fonts/TT Ramillas Trial Italic.ttf') format('truetype');
+  font-weight: 400;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'TT Ramillas';
+  src: url('../fonts/TT Ramillas Trial Medium.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'TT Ramillas';
+  src: url('../fonts/TT Ramillas Trial Medium Italic.ttf') format('truetype');
+  font-weight: 500;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'TT Ramillas';
+  src: url('../fonts/TT Ramillas Trial Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'TT Ramillas';
+  src: url('../fonts/TT Ramillas Trial Bold Italic.ttf') format('truetype');
+  font-weight: 700;
+  font-style: italic;
+}
+
 :root {
   --bg: #faf6ef;
   --text: #3b2f2f;
@@ -360,7 +403,7 @@ body {
 }
 
 .features-logo-right {
-  width: 90px; /* 50% bigger than 60px */
+  width: 120px; /* 200% (double) of 60px */
   margin-left: -40px; /* shift left */
 }
 
