@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", () => {
   console.log("✅ main.js DOMContentLoaded event fired");
 
   // Smooth scroll from any CTA button to waitlist form
-  document.querySelectorAll(".cta-btn").forEach(btn => {
+  document.querySelectorAll(".cta-btn, .cta-btn-white").forEach(btn => {
     btn.addEventListener("click", (e) => {
       e.preventDefault();
       const waitlistSection = document.getElementById("waitlist");
