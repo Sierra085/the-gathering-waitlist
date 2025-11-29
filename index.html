@@ -326,7 +326,11 @@
 
         <div class="question" data-step="24">
           <h2>Anything else you'd like to add?</h2>
-          <textarea name="other_info" placeholder="Share any final thoughts..."></textarea>
+          <div class="radio-group">
+            <label><input type="radio" name="has_other_info" value="No" checked><span>No</span></label>
+            <label><input type="radio" name="has_other_info" value="Yes" id="otherYes"><span>Yes</span></label>
+          </div>
+          <textarea name="other_info" id="otherInfoBox" placeholder="Share any final thoughts..." style="display:none; margin-top: 1rem;"></textarea>
           <button type="submit">Join the Waitlist</button>
         </div>
 
