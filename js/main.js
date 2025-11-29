@@ -159,6 +159,27 @@ document.addEventListener("DOMContentLoaded", () => {
   limitCheckboxes("needsGroup", 3);
   limitCheckboxes("tasksGroup", 3);
 
+  // Show/hide "Other" text boxes for checkbox questions
+  function handleOtherCheckbox(checkboxId, textBoxId) {
+    const checkbox = document.getElementById(checkboxId);
+    const textBox = document.getElementById(textBoxId);
+    if (checkbox && textBox) {
+      checkbox.addEventListener("change", () => {
+        if (checkbox.checked) {
+          textBox.style.display = "block";
+          textBox.focus();
+        } else {
+          textBox.style.display = "none";
+          textBox.value = ""; // Clear the text box when unchecked
+        }
+      });
+    }
+  }
+
+  handleOtherCheckbox("needsOther", "needsOtherText");
+  handleOtherCheckbox("tasksOther", "tasksOtherText");
+  handleOtherCheckbox("timesOther", "timesOtherText");
+
   // Show/hide "Other" text box on step 24
   const otherRadios = document.querySelectorAll('input[name="has_other_info"]');
   const otherInfoBox = document.getElementById("otherInfoBox");
