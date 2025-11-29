@@ -183,11 +183,17 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   // Form submission to Google Sheets
-  document.getElementById("waitlistForm").addEventListener("submit", async (e) => {
-    e.preventDefault();
-    const form = e.target;
-    const submitBtn = form.querySelector('button[type="submit"]');
-    const current = document.querySelector(".question.active");
+  const waitlistForm = document.getElementById("waitlistForm");
+  if (waitlistForm) {
+    console.log("✅ Waitlist form found, attaching submit handler");
+    waitlistForm.addEventListener("submit", async (e) => {
+      console.log("🚀 Form submit event fired!");
+      e.preventDefault();
+      const form = e.target;
+      const submitBtn = form.querySelector('button[type="submit"]');
+      const current = document.querySelector(".question.active");
+
+      console.log("Current step:", current ? current.dataset.step : "none");
 
     // Disable button + show status
     submitBtn.disabled = true;
@@ -245,6 +251,9 @@ document.addEventListener("DOMContentLoaded", () => {
       submitBtn.disabled = false;
     }
   });
+  } else {
+    console.error("❌ Waitlist form NOT found!");
+  }
 
   // scroll fade reveal
   const observer = new IntersectionObserver((entries) => {
