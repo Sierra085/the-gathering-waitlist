@@ -377,7 +377,7 @@ body {
 
 /* =============== PRIMARY FEATURES SECTION =============== */
 #primary-features {
-  background: #1a1a1a;
+  background: #2a2a2a; /* Lighter shade for Story 1 */
   color: #ffffff;
   padding: 4rem 2rem 6rem;
   min-height: 100vh;
@@ -471,6 +471,16 @@ body {
 .features-cta {
   text-align: center;
   margin-top: 4rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.features-cta .scroll-hint {
+  position: static;
+  margin: 0;
+  animation: bounce 1.5s infinite;
 }
 
 .cta-text {
@@ -537,7 +547,7 @@ body {
 
 /* =============== WAITLIST SECTION (existing form) =============== */
 #waitlist {
-  background: #b8a090;
+  background: #2a2a2a; /* Same shade as Primary Features */
   padding: 4rem 1rem 6rem;
   display: flex;
   justify-content: center;
@@ -715,7 +725,7 @@ section.visible {
 
 /* =============== COMING SOON SECTION =============== */
 #coming-soon {
-  background: #1a1a1a;
+  background: #1a1a1a; /* Darker shade for Story 2 */
   color: #ffffff;
   padding: 4rem 2rem 6rem;
   min-height: 100vh;
@@ -813,6 +823,12 @@ section.visible {
   flex-direction: column;
   align-items: center;
   gap: 1.5rem;
+}
+
+.coming-soon-cta .scroll-hint {
+  position: static;
+  margin: 0;
+  animation: bounce 1.5s infinite;
 }
 
 .cta-btn-outline {
