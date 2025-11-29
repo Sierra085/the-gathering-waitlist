@@ -1,4 +1,7 @@
+console.log("📜 main.js is loading...");
+
 document.addEventListener("DOMContentLoaded", () => {
+  console.log("✅ main.js DOMContentLoaded event fired");
 
   // Smooth scroll from any CTA button to waitlist form
   document.querySelectorAll(".cta-btn").forEach(btn => {
@@ -183,9 +186,24 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   // Form submission to Google Sheets
+  console.log("🔍 Looking for waitlistForm...");
   const waitlistForm = document.getElementById("waitlistForm");
+  console.log("waitlistForm element:", waitlistForm);
+  
   if (waitlistForm) {
     console.log("✅ Waitlist form found, attaching submit handler");
+    
+    // Also add a click listener to the submit button for debugging
+    setTimeout(() => {
+      const submitButton = waitlistForm.querySelector('button[type="submit"]');
+      console.log("Submit button:", submitButton);
+      if (submitButton) {
+        submitButton.addEventListener("click", (e) => {
+          console.log("💥 Submit button CLICKED!");
+        });
+      }
+    }, 1000);
+    
     waitlistForm.addEventListener("submit", async (e) => {
       console.log("🚀 Form submit event fired!");
       e.preventDefault();
