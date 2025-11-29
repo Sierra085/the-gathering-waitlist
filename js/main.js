@@ -163,8 +163,11 @@ document.addEventListener("DOMContentLoaded", () => {
   function handleOtherCheckbox(checkboxId, textBoxId) {
     const checkbox = document.getElementById(checkboxId);
     const textBox = document.getElementById(textBoxId);
+    console.log(`Looking for checkbox: ${checkboxId}, found:`, checkbox);
+    console.log(`Looking for textBox: ${textBoxId}, found:`, textBox);
     if (checkbox && textBox) {
       checkbox.addEventListener("change", () => {
+        console.log(`${checkboxId} changed, checked:`, checkbox.checked);
         if (checkbox.checked) {
           textBox.style.display = "block";
           textBox.focus();
@@ -179,23 +182,6 @@ document.addEventListener("DOMContentLoaded", () => {
   handleOtherCheckbox("needsOther", "needsOtherText");
   handleOtherCheckbox("tasksOther", "tasksOtherText");
   handleOtherCheckbox("timesOther", "timesOtherText");
-
-  // Show/hide "Other" text box on step 24
-  const otherRadios = document.querySelectorAll('input[name="has_other_info"]');
-  const otherInfoBox = document.getElementById("otherInfoBox");
-  if (otherRadios.length && otherInfoBox) {
-    otherRadios.forEach(radio => {
-      radio.addEventListener("change", () => {
-        if (radio.value === "Yes" && radio.checked) {
-          otherInfoBox.style.display = "block";
-          otherInfoBox.focus();
-        } else if (radio.value === "No" && radio.checked) {
-          otherInfoBox.style.display = "none";
-          otherInfoBox.value = ""; // Clear the text box when hidden
-        }
-      });
-    });
-  }
 
   // Allow Enter / Return to act as "Next" or "Submit"
   document.addEventListener("keydown", (e) => {
