@@ -96,6 +96,27 @@ document.addEventListener("DOMContentLoaded", () => {
     (submitBtn || nextBtn)?.click();
   });
 
+  // Checkbox limit (max 3 selections)
+  function limitCheckboxes(groupId, maxSelections) {
+    const group = document.getElementById(groupId);
+    if (!group) return;
+
+    const checkboxes = group.querySelectorAll('input[type="checkbox"]');
+    checkboxes.forEach(checkbox => {
+      checkbox.addEventListener("change", () => {
+        const checkedCount = group.querySelectorAll('input[type="checkbox"]:checked').length;
+        if (checkedCount > maxSelections) {
+          checkbox.checked = false;
+          alert(`You can select up to ${maxSelections} options only.`);
+        }
+      });
+    });
+  }
+
+  limitCheckboxes("needsGroup", 3);
+  limitCheckboxes("tasksGroup", 3);
+  limitCheckboxes("availabilityGroup", 8); // Allow all selections for availability
+
   // Form submission
   document.getElementById("surveyForm").addEventListener("submit", async (e) => {
     e.preventDefault();
