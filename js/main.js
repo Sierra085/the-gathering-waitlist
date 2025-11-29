@@ -56,34 +56,6 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // "Other" checkbox handlers - show/hide text inputs
-  const needsOtherCheckbox = document.getElementById("needsOtherCheckbox");
-  const needsOtherText = document.getElementById("needsOtherText");
-  if (needsOtherCheckbox && needsOtherText) {
-    needsOtherCheckbox.addEventListener("change", function() {
-      needsOtherText.style.display = this.checked ? "block" : "none";
-      if (!this.checked) needsOtherText.value = "";
-    });
-  }
-
-  const tasksOtherCheckbox = document.getElementById("tasksOtherCheckbox");
-  const tasksOtherText = document.getElementById("tasksOtherText");
-  if (tasksOtherCheckbox && tasksOtherText) {
-    tasksOtherCheckbox.addEventListener("change", function() {
-      tasksOtherText.style.display = this.checked ? "block" : "none";
-      if (!this.checked) tasksOtherText.value = "";
-    });
-  }
-
-  const timesOtherCheckbox = document.getElementById("timesOtherCheckbox");
-  const timesOtherText = document.getElementById("timesOtherText");
-  if (timesOtherCheckbox && timesOtherText) {
-    timesOtherCheckbox.addEventListener("change", function() {
-      timesOtherText.style.display = this.checked ? "block" : "none";
-      if (!this.checked) timesOtherText.value = "";
-    });
-  }
-
   // Progressive form logic
   let currentStep = 1;
   const questions = document.querySelectorAll(".question");
@@ -257,51 +229,8 @@ document.addEventListener("DOMContentLoaded", () => {
     current.appendChild(statusMsg);
 
     try {
-      // Create FormData from the form
+      // Use FormData from the form directly
       const formData = new FormData(form);
-
-      // Convert checkbox arrays to comma-separated strings
-      const needsValues = [];
-      form.querySelectorAll('input[name="needs[]"]:checked').forEach(cb => {
-        needsValues.push(cb.value);
-      });
-      // Add "Other" text if provided
-      const needsOther = form.querySelector('input[name="needs_other"]');
-      if (needsOther && needsOther.value.trim()) {
-        needsValues.push(`Other: ${needsOther.value.trim()}`);
-      }
-      
-      const tasksValues = [];
-      form.querySelectorAll('input[name="tasks[]"]:checked').forEach(cb => {
-        tasksValues.push(cb.value);
-      });
-      // Add "Other" text if provided
-      const tasksOther = form.querySelector('input[name="tasks_other"]');
-      if (tasksOther && tasksOther.value.trim()) {
-        tasksValues.push(`Other: ${tasksOther.value.trim()}`);
-      }
-      
-      const timesValues = [];
-      form.querySelectorAll('input[name="times[]"]:checked').forEach(cb => {
-        timesValues.push(cb.value);
-      });
-      // Add "Other" text if provided
-      const timesOther = form.querySelector('input[name="times_other"]');
-      if (timesOther && timesOther.value.trim()) {
-        timesValues.push(`Other: ${timesOther.value.trim()}`);
-      }
-
-      // Remove the array entries and add comma-separated strings
-      formData.delete('needs[]');
-      formData.delete('tasks[]');
-      formData.delete('times[]');
-      formData.delete('needs_other');
-      formData.delete('tasks_other');
-      formData.delete('times_other');
-      
-      formData.append('Which of these needs most align with you at this stage of your life? (You may pick up to 3 and/or add an option that is not provided below)', needsValues.join(', '));
-      formData.append('Which of these types of tasks do you struggle with most? Pick top 3, including an option you don\'t see in the list, which you can describe under "Other"', tasksValues.join(', '));
-      formData.append('Which of these times are you most likely able to get time to yourself or be least distracted? (Answer in respect to your own timezone. You may select all that\'s relevant or simply select the "Flexible" option. If you have alternative arrangements, feel free to elaborate under "Other")', timesValues.join(', '));
 
       // Google Sheets endpoint
       const response = await fetch(
