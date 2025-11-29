@@ -260,12 +260,46 @@ document.addEventListener("DOMContentLoaded", () => {
       // Create FormData from the form
       const formData = new FormData(form);
 
-      // Convert checkbox arrays to comma-separated strings
+      // Create a new FormData with correct Google Sheets column names
+      const mappedData = new FormData();
+      
+      // Map simple field names to exact Google Sheets column headers
+      const fieldMapping = {
+        'full_name': 'Full name',
+        'email': 'Email',
+        'age': 'Age',
+        'occupation': 'Current working status or occupation',
+        'country': 'Which country are you based in? (You may name more than 1 if you travel often.)',
+        'relationship': 'What is your current relationship and family status?',
+        'primary_features': 'Which of our primary features most interest you and why?',
+        'secondary_features': 'Which of our secondary (coming soon) features most interest you and why?',
+        'feature_suggestions': 'What features would you like to see that\'s not here (or anywhere else) and why?',
+        'tier': 'Which of these tiers sounds most aligned to you?',
+        'knows_coworking': 'Do you know what virtual co-working is? (If yes, skip to Section 3. If no, skip to Section 4)',
+        'cw_understanding': 'Briefly describe what your understanding of virtual co-working is in your own words.',
+        'cw_platforms': 'Where have you experienced virtual co-working before? Name the platforms and/or nature of the experience where appropriate.',
+        'cw_liked': 'What do/did you like about your experience(s)?',
+        'cw_lacking': 'What do/did you find lacking in your experience?',
+        'cw_paid': 'Have you been or are you currently a paying member of the abovementioned coworking platform(s)?',
+        'worries': 'List all your worries entering into the new calendar year.',
+        'goals': 'List all your goals and/or aspirations entering into the new calendar year.',
+        'pricing': 'How much would you be happy to pay monthly for the primary features?',
+        'additional_comments': 'Anything else you\'d like to add?'
+      };
+
+      // Copy all simple fields using the mapping
+      for (const [shortName, fullName] of Object.entries(fieldMapping)) {
+        const value = formData.get(shortName);
+        if (value) {
+          mappedData.append(fullName, value);
+        }
+      }
+
+      // Handle checkbox arrays - convert to comma-separated strings
       const needsValues = [];
       form.querySelectorAll('input[name="needs[]"]:checked').forEach(cb => {
         needsValues.push(cb.value);
       });
-      // Add "Other" text if provided
       const needsOther = form.querySelector('input[name="needs_other"]');
       if (needsOther && needsOther.value.trim()) {
         needsValues.push(`Other: ${needsOther.value.trim()}`);
@@ -275,7 +309,6 @@ document.addEventListener("DOMContentLoaded", () => {
       form.querySelectorAll('input[name="tasks[]"]:checked').forEach(cb => {
         tasksValues.push(cb.value);
       });
-      // Add "Other" text if provided
       const tasksOther = form.querySelector('input[name="tasks_other"]');
       if (tasksOther && tasksOther.value.trim()) {
         tasksValues.push(`Other: ${tasksOther.value.trim()}`);
@@ -285,30 +318,22 @@ document.addEventListener("DOMContentLoaded", () => {
       form.querySelectorAll('input[name="times[]"]:checked').forEach(cb => {
         timesValues.push(cb.value);
       });
-      // Add "Other" text if provided
       const timesOther = form.querySelector('input[name="times_other"]');
       if (timesOther && timesOther.value.trim()) {
         timesValues.push(`Other: ${timesOther.value.trim()}`);
       }
 
-      // Remove the array entries and add comma-separated strings with correct Google Sheets column names
-      formData.delete('needs[]');
-      formData.delete('tasks[]');
-      formData.delete('times[]');
-      formData.delete('needs_other');
-      formData.delete('tasks_other');
-      formData.delete('times_other');
-      
-      formData.append('Which of these needs most align with you at this stage of your life? (You may pick up to 3 and/or add an option that is not provided below)', needsValues.join(', '));
-      formData.append('Which of these types of tasks do you struggle with most? Pick top 3, including an option you don\'t see in the list, which you can describe under "Other"', tasksValues.join(', '));
-      formData.append('Which of these times are you most likely able to get time to yourself or be least distracted? (Answer in respect to your own timezone. You may select all that\'s relevant or simply select the "Flexible" option. If you have alternative arrangements, feel free to elaborate under "Other")', timesValues.join(', '));
+      // Add checkbox data with correct Google Sheets column names
+      mappedData.append('Which of these needs most align with you at this stage of your life? (You may pick up to 3 and/or add an option that is not provided below)', needsValues.join(', '));
+      mappedData.append('Which of these types of tasks do you struggle with most? Pick top 3, including an option you don\'t see in the list, which you can describe under "Other"', tasksValues.join(', '));
+      mappedData.append('Which of these times are you most likely able to get time to yourself or be least distracted? (Answer in respect to your own timezone. You may select all that\'s relevant or simply select the "Flexible" option. If you have alternative arrangements, feel free to elaborate under "Other")', timesValues.join(', '));
 
       // Google Sheets endpoint
       const response = await fetch(
         "https://script.google.com/macros/s/AKfycbwmMyJ_v8osQyCKQebIhin3es9OOubTRBCqpRXLZc5oLsQSEueI8gg14bOQK6nEpfZ-/exec",
         {
           method: "POST",
-          body: formData
+          body: mappedData
         }
       );
 
