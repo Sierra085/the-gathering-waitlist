@@ -163,11 +163,8 @@ document.addEventListener("DOMContentLoaded", () => {
   function handleOtherCheckbox(checkboxId, textBoxId) {
     const checkbox = document.getElementById(checkboxId);
     const textBox = document.getElementById(textBoxId);
-    console.log(`Looking for checkbox: ${checkboxId}, found:`, checkbox);
-    console.log(`Looking for textBox: ${textBoxId}, found:`, textBox);
     if (checkbox && textBox) {
       checkbox.addEventListener("change", () => {
-        console.log(`${checkboxId} changed, checked:`, checkbox.checked);
         if (checkbox.checked) {
           textBox.style.display = "block";
           textBox.focus();
