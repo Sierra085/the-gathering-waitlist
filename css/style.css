@@ -359,6 +359,10 @@ body {
   height: auto;
 }
 
+.features-logo-right {
+  width: 78px; /* 30% bigger than 60px */
+}
+
 .features-title {
   font-size: 2.5rem;
   font-weight: 400;
