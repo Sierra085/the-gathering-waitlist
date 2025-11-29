@@ -360,7 +360,8 @@ body {
 }
 
 .features-logo-right {
-  width: 78px; /* 30% bigger than 60px */
+  width: 90px; /* 50% bigger than 60px */
+  margin-left: -40px; /* shift left */
 }
 
 .features-title {
