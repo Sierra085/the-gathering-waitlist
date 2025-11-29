@@ -210,7 +210,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       // YOUR ENDPOINT WILL GO HERE
       const response = await fetch(
-        "https://script.google.com/macros/s/AKfycbx49s1kNk4C9Il_p_fZt8FjkaT3xesULBvcmaPvYqVl-thgCNobt4AnzncKCyhI5Wo/exec",
+        "https://script.google.com/macros/s/AKfycbwbSr9PJX5FFwrdn8WvqdCW9KwgupvBiLtYKWYv5Pq04wmcEZ3fDmqsDTPhLhHqdVY/exec",
         {
           method: "POST",
           body: formData
