@@ -228,6 +228,20 @@
     </div>
   </section>
 
+  <!-- Try multiple script loading methods to ensure it works -->
   <script src="js/survey.js"></script>
+  <script src="./js/survey.js"></script>
+  <script>
+    // Debug: Verify survey.js loaded
+    console.log("Survey page loaded");
+    console.log("nextQuestion function exists:", typeof window.nextQuestion);
+    console.log("surveyForm element:", document.getElementById("surveyForm"));
+    
+    // If survey.js didn't load, show error
+    if (typeof window.nextQuestion === 'undefined') {
+      console.error("❌ survey.js DID NOT LOAD! Check the file path.");
+      console.log("Current page location:", window.location.href);
+    }
+  </script>
 </body>
 </html>

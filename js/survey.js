@@ -1,4 +1,7 @@
+console.log("✅ survey.js is loading...");
+
 document.addEventListener("DOMContentLoaded", () => {
+  console.log("✅ survey.js DOMContentLoaded fired");
 
   // progressive form logic
   let currentStep = 1;
