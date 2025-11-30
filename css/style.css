@@ -90,6 +90,11 @@ h1, h2, h3, h4, h5, h6 {
   font-family: var(--header-font);
 }
 
+/* Hide coming soon section */
+#coming-soon {
+  display: none !important;
+}
+
 /* =============== HERO 1 SECTION =============== */
 #hero1 {
   position: relative;
@@ -478,7 +483,7 @@ body {
 
 /* =============== STORY 4 SECTION (RENAMED FROM PRIMARY FEATURES) =============== */
 #story4 {
-  background: #2a2a2a; /* Lighter shade for Story 4 */
+  background: var(--midnight);
   color: #ffffff;
   padding: 4rem 2rem 6rem;
   min-height: 100vh;
@@ -589,6 +594,14 @@ body {
   position: static;
   margin: 0;
   animation: bounce 1.5s infinite;
+}
+
+.cta-buttons {
+  display: flex;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 1rem;
 }
 
 .cta-text {
