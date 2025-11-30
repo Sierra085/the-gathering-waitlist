@@ -159,11 +159,15 @@ h1, h2, h3, h4, h5, h6 {
   font-size: 0.95rem;
   color: #ffffff;
   font-weight: 400;
-  margin-top: 1rem;
   position: absolute;
-  bottom: 5rem;
+  bottom: 4.5rem;
   left: 50%;
   transform: translateX(-50%);
+  z-index: 2;
+}
+
+#hero1 .scroll-hint {
+  color: #ffffff;
 }
 
 /* =============== HERO 2 SECTION (RENAMED FROM HERO) =============== */
