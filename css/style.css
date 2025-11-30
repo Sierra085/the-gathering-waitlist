@@ -80,8 +80,8 @@ h1, h2, h3, h4, h5, h6 {
   font-family: var(--header-font);
 }
 
-/* =============== HERO SECTION FIXED =============== */
-#hero {
+/* =============== HERO 2 SECTION (RENAMED FROM HERO) =============== */
+#hero2 {
   position: relative;
   height: 100vh;
   background: url("../assets/Homepage2.jpg") center center / cover no-repeat;
@@ -95,7 +95,7 @@ h1, h2, h3, h4, h5, h6 {
   overflow: hidden;
 }
 
-#hero::after {
+#hero2::after {
   content: "";
   position: absolute;
   inset: 0;
@@ -110,14 +110,14 @@ h1, h2, h3, h4, h5, h6 {
   max-width: 900px;
 }
 
-#hero .logo {
+#hero2 .logo {
   width: min(80vw, 900px);
   max-height: 50vh;
   object-fit: contain;
   margin-bottom: 2rem;
 }
 
-#hero h1 {
+#hero2 h1 {
   font-size: 2.8rem;
   margin-bottom: 0.5rem;
   color: #ffffff;
@@ -125,7 +125,7 @@ h1, h2, h3, h4, h5, h6 {
   letter-spacing: -0.5px;
 }
 
-#hero .tagline {
+#hero2 .tagline {
   max-width: 700px;
   margin: 1rem auto 1.5rem;
   font-size: 1.1rem;
@@ -134,7 +134,7 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: 300;
 }
 
-#hero .cta-btn {
+#hero2 .cta-btn {
   background: #ffffff;
   color: #3b2f2f;
   border: none;
@@ -148,13 +148,13 @@ h1, h2, h3, h4, h5, h6 {
   margin: 1.5rem 0 1rem;
 }
 
-#hero .cta-btn:hover {
+#hero2 .cta-btn:hover {
   background: #f5f5f5;
   transform: translateY(-2px);
   box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
 }
 
-#hero .mini-note {
+#hero2 .mini-note {
   font-size: 0.95rem;
   color: #ffffff;
   font-weight: 300;
@@ -386,9 +386,9 @@ body {
   50% { transform: translateY(10px); }
 }
 
-/* =============== PRIMARY FEATURES SECTION =============== */
-#primary-features {
-  background: #2a2a2a; /* Lighter shade for Story 1 */
+/* =============== STORY 4 SECTION (RENAMED FROM PRIMARY FEATURES) =============== */
+#story4 {
+  background: #2a2a2a; /* Lighter shade for Story 4 */
   color: #ffffff;
   padding: 4rem 2rem 6rem;
   min-height: 100vh;
@@ -571,7 +571,7 @@ body {
     gap: 2rem;
   }
   
-  #primary-features {
+  #story4 {
     padding: 3rem 0.5rem 4rem; /* Reduce section padding */
   }
 }
@@ -579,7 +579,7 @@ body {
 
 /* =============== WAITLIST SECTION (existing form) =============== */
 #waitlist {
-  background: #2a2a2a; /* Same shade as Primary Features */
+  background: #2a2a2a; /* Same shade as Story 4 */
   padding: 4rem 1rem 6rem;
   display: flex;
   justify-content: center;
@@ -755,9 +755,9 @@ section.visible {
   transform: translateY(0);
 }
 
-/* =============== COMING SOON SECTION =============== */
-#coming-soon {
-  background: #1a1a1a; /* Darker shade for Story 2 */
+/* =============== STORY 5 SECTION (RENAMED FROM COMING SOON) - KIV =============== */
+#story5 {
+  background: #1a1a1a; /* Darker shade for Story 5 */
   color: #ffffff;
   padding: 4rem 2rem 6rem;
   min-height: 100vh;
