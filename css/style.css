@@ -489,7 +489,20 @@ body {
 
 /* =============== STORY 4 SECTION (RENAMED FROM PRIMARY FEATURES) =============== */
 #story4 {
-  background: var(--midnight);
+  background: var(--midnight); /* Midnight color */
+  color: #ffffff;
+  padding: 4rem 2rem 6rem;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  overflow-x: hidden;
+}
+
+/* Also apply to #primary-features for backward compatibility */
+#primary-features {
+  background: var(--midnight); /* Midnight color */
   color: #ffffff;
   padding: 4rem 2rem 6rem;
   min-height: 100vh;
