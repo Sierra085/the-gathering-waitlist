@@ -336,7 +336,7 @@ h1, h2, h3, h4, h5, h6 {
   justify-content: center;
   align-items: center;
   padding: 4rem 2rem;
-  background: #a89080;
+  background: var(--soothe); /* Updated to Soothe */
 }
 
 html {
@@ -351,14 +351,14 @@ body {
   line-height: 1.6;
 }
 
-/* Story 2 - lighter background */
+/* Story 2 - same soothe background */
 #story2 {
-  background: #b8a090;
+  background: var(--soothe);
 }
 
 /* Story pages positioning */
 #story1, #story3 {
-  background: #a89080;
+  background: var(--soothe);
 }
 
 .story-content {
@@ -371,7 +371,7 @@ body {
 }
 
 .story-text-column {
-  background: #a89080;
+  background: var(--soothe); /* Updated to Soothe */
   color: #ffffff;
   padding: 3rem 4rem;
   display: flex;
@@ -429,10 +429,11 @@ body {
 }
 
 .story-image-column {
-  background: #a89080;
+  background: var(--soothe); /* Updated to Soothe */
   display: flex;
   align-items: stretch;
   overflow: hidden;
+  min-height: 100vh; /* Make proportionate to viewport height */
 }
 
 .story-image-column img {
@@ -440,6 +441,11 @@ body {
   height: 100%;
   object-fit: cover;
   display: block;
+}
+
+/* Story 1 - zoom windowseat.jpg to remove white border */
+#story1 .story-image-column img {
+  transform: scale(1.05); /* Zoom in by 5% */
 }
 
 /* Story 2 - single column text with image on right */
