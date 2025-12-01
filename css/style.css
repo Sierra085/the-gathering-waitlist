@@ -448,6 +448,11 @@ body {
   transform: scale(1.05); /* Zoom in by 5% */
 }
 
+/* Story 3 - use Ramillas font family */
+#story3 .story-text-column {
+  font-family: var(--header-font);
+}
+
 /* Story 2 - single column text with image on right */
 #story2 .story-text-column {
   font-size: 1.2rem;
