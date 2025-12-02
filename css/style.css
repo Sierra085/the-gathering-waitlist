@@ -714,11 +714,26 @@ body {
 
 /* =============== WAITLIST SECTION (existing form) =============== */
 #waitlist {
-  background: #2a2a2a; /* Same shade as Story 4 */
+  background: linear-gradient(135deg, var(--lush) 0%, var(--shore) 25%, var(--soothe) 50%, var(--breeze) 75%, var(--lush) 100%);
+  background-size: 400% 400%;
+  animation: gradientShift 15s ease infinite;
   padding: 4rem 1rem 6rem;
   display: flex;
   justify-content: center;
   scroll-margin-top: 5rem;
+  min-height: 100vh;
+}
+
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
 
 .container {
