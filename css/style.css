@@ -202,12 +202,14 @@ h1, h2, h3, h4, h5, h6 {
   position: relative;
   z-index: 1;
   max-width: 900px;
+  text-align: left;
+  margin-left: 10%;
 }
 
 #hero2 h1 {
-  font-size: 4rem;
+  font-size: 8rem;
   margin-bottom: 1.5rem;
-  color: var(--solitude);
+  color: var(--breeze);
   font-weight: 400;
   letter-spacing: -0.5px;
   line-height: 1.1;
@@ -215,8 +217,8 @@ h1, h2, h3, h4, h5, h6 {
 
 #hero2 .tagline {
   max-width: 700px;
-  margin: 0 auto 2rem;
-  font-size: 1.2rem;
+  margin: 0 0 2rem 0;
+  font-size: 2.4rem;
   line-height: 1.7;
   color: #ffffff;
   font-weight: 300;
@@ -245,7 +247,7 @@ h1, h2, h3, h4, h5, h6 {
 #hero2 .see-inside {
   position: absolute;
   bottom: 6rem;
-  font-size: 1rem;
+  font-size: 1.5rem;
   color: #ffffff;
   font-weight: 400;
   z-index: 1;
