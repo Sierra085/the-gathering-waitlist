@@ -222,9 +222,6 @@ h1, h2, h3, h4, h5, h6 {
   line-height: 1.7;
   color: #ffffff;
   font-weight: 300;
-  position: absolute;
-  left: 2rem;
-  top: 60%;
 }
 
 #hero2 .cta-btn {
@@ -1096,6 +1093,7 @@ section.visible {
   #hero2 {
     justify-content: flex-start;
     padding-top: 15vh;
+    background-position: 35% center;
   }
 
   .hero-content {
