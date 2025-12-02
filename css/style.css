@@ -203,7 +203,8 @@ h1, h2, h3, h4, h5, h6 {
   z-index: 1;
   max-width: 900px;
   text-align: left;
-  margin-left: 10%;
+  margin-left: 5%;
+  margin-right: auto;
 }
 
 #hero2 h1 {
