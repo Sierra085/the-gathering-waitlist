@@ -218,10 +218,13 @@ h1, h2, h3, h4, h5, h6 {
 #hero2 .tagline {
   max-width: 700px;
   margin: 0 0 2rem 0;
-  font-size: 2.4rem;
+  font-size: 1.92rem;
   line-height: 1.7;
   color: #ffffff;
   font-weight: 300;
+  position: absolute;
+  left: 2rem;
+  top: 60%;
 }
 
 #hero2 .cta-btn {
@@ -1087,5 +1090,41 @@ section.visible {
   
   #coming-soon {
     padding: 3rem 0.5rem 4rem; /* Reduce section padding */
+  }
+
+  /* Hero 2 Mobile Adjustments */
+  #hero2 {
+    justify-content: flex-start;
+    padding-top: 15vh;
+  }
+
+  .hero-content {
+    margin-left: 0;
+    padding: 0 1.5rem;
+    text-align: left;
+  }
+
+  #hero2 h1 {
+    font-size: 3.5rem;
+    line-height: 1.05;
+    margin-bottom: 1rem;
+  }
+
+  #hero2 .tagline {
+    position: static;
+    font-size: 1.1rem;
+    line-height: 1.5;
+    max-width: 100%;
+    margin: 0 0 1.5rem 0;
+  }
+
+  #hero2 .cta-btn {
+    padding: 0.9rem 2rem;
+    font-size: 1rem;
+  }
+
+  #hero2 .see-inside {
+    font-size: 1rem;
+    bottom: 4rem;
   }
 }
