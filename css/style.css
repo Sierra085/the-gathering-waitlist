@@ -360,7 +360,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .story-text-column {
   background: var(--soothe); /* Updated to Soothe */
-  color: #ffffff;
+  color: var(--midnight);
   padding: 3rem 4rem;
   display: flex;
   flex-direction: column;
@@ -396,8 +396,8 @@ h1, h2, h3, h4, h5, h6 {
   margin: 1.5rem 0;
   padding: 1rem 1.5rem;
   padding-left: 1.5rem;
-  border-left: 3px solid rgba(255, 255, 255, 0.4);
-  background: rgba(0, 0, 0, 0.1);
+  border-left: 3px solid var(--endure);
+  background: rgba(0, 0, 0, 0.05);
   border-radius: 4px;
 }
 
@@ -407,7 +407,7 @@ h1, h2, h3, h4, h5, h6 {
   margin-bottom: 0.3rem;
   text-align: center;
   font-weight: 400;
-  color: #ffffff;
+  color: var(--midnight);
   position: relative;
   z-index: 1;
 }
