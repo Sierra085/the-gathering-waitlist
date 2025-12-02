@@ -339,18 +339,6 @@ h1, h2, h3, h4, h5, h6 {
   background: var(--soothe); /* Updated to Soothe */
 }
 
-html {
-  scroll-behavior: smooth;
-}
-
-body {
-  font-family: var(--body-font);
-  margin: 0;
-  background-color: var(--bg);
-  color: var(--text);
-  line-height: 1.6;
-}
-
 /* Story 2 - same soothe background */
 #story2 {
   background: var(--soothe);
