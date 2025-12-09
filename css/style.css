@@ -132,6 +132,7 @@ h1, h2, h3, h4, h5, h6 {
   max-height: 60vh;
   object-fit: contain;
   margin-bottom: 2rem;
+  margin-left: -5%;
 }
 
 #hero1 h1 {
