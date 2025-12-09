@@ -110,7 +110,7 @@ h1, h2, h3, h4, h5, h6 {
 #landing-page {
   position: relative;
   height: 100vh;
-  background: url("../assets/Homepage1.jpg") center center / cover no-repeat;
+  background: url("../assets/Homepage2.jpg") center center / cover no-repeat;
   color: #ffffff;
   display: flex;
   flex-direction: column;
