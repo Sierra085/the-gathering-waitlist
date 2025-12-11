@@ -210,7 +210,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .landing-content h1 {
-  font-size: clamp(4.5rem, 12vw, 9rem);
+  font-size: clamp(2.5rem, 12vw, 9rem);
   line-height: 1.05;
   margin-bottom: 1.5rem;
   font-weight: 400;
@@ -218,14 +218,14 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .landing-tagline {
-  font-size: clamp(1.5rem, 3vw, 2.25rem);
+  font-size: clamp(1rem, 3vw, 2.25rem);
   line-height: 1.6;
   margin-bottom: 2rem;
   font-weight: 300;
 }
 
 .landing-cta-text {
-  font-size: clamp(1.5rem, 2.7vw, 1.95rem);
+  font-size: clamp(0.9rem, 2.7vw, 1.95rem);
   line-height: 1.6;
   font-weight: 700;
   font-style: italic;
@@ -234,7 +234,7 @@ h1, h2, h3, h4, h5, h6 {
   position: absolute;
   bottom: 3rem;
   left: 3rem;
-  max-width: 600px;
+  max-width: 45%;
   z-index: 1;
 }
 
@@ -264,10 +264,10 @@ h1, h2, h3, h4, h5, h6 {
   bottom: 3rem;
   right: 3rem;
   z-index: 1;
-  font-size: clamp(1rem, 1.8vw, 1.2rem);
+  font-size: clamp(0.8rem, 1.8vw, 1.2rem);
   font-weight: 300;
   text-align: right;
-  max-width: 500px;
+  max-width: 45%;
 }
 
 /* =============== HERO 1 SECTION =============== */
