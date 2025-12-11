@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes" />
+  <title>The Gathering — Blog</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <style>
+    #blog-coming-soon {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      background-color: var(--bg);
+      color: var(--text);
+      padding: 2rem;
+    }
+
+    #blog-coming-soon img.brandmark {
+      width: 80px;
+      margin-bottom: 2rem;
+      opacity: 0.9;
+    }
+
+    #blog-coming-soon h1 {
+      font-family: var(--header-font);
+      font-size: clamp(3rem, 8vw, 5rem);
+      margin-bottom: 1rem;
+      color: var(--endure);
+    }
+
+    #blog-coming-soon p {
+      font-size: clamp(1.2rem, 3vw, 1.5rem);
+      max-width: 600px;
+      margin: 0 auto 2rem;
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    #blog-coming-soon .back-link {
+      display: inline-block;
+      margin-top: 2rem;
+      padding: 1rem 2.5rem;
+      background: var(--endure);
+      color: #ffffff;
+      text-decoration: none;
+      border-radius: 50px;
+      font-weight: 600;
+      letter-spacing: 1px;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    }
+
+    #blog-coming-soon .back-link:hover {
+      background: var(--shore);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+    }
+  </style>
+</head>
+
+<body>
+  <section id="blog-coming-soon">
+    <img src="assets/BrandmarkWhite.png" alt="The Gathering" class="brandmark" />
+    <h1>Coming Soon</h1>
+    <p>
+      Our blog is brewing. Stay tuned for stories, insights and conversations about radical personal growth and healing.
+    </p>
+    <a href="index.html" class="back-link">Back to Home</a>
+  </section>
+</body>
+</html>
