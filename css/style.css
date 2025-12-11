@@ -1363,15 +1363,30 @@ section.visible {
   }
 }
 
-/* Medium screen adjustments for landing page to prevent overlap */
-@media (min-width: 769px) and (max-width: 1100px) {
+/* Medium to large laptop screen adjustments for landing page to prevent overlap */
+@media (min-width: 769px) and (max-width: 1600px) {
   .landing-cta-text {
-    max-width: 40%;
-    font-size: clamp(0.9rem, 1.8vw, 1.4rem);
+    max-width: 38%;
+    font-size: clamp(0.9rem, 1.5vw, 1.6rem);
+    left: 2rem;
   }
 
   .landing-footer-text {
-    max-width: 40%;
-    font-size: clamp(0.8rem, 1.5vw, 1rem);
+    max-width: 38%;
+    font-size: clamp(0.8rem, 1.3vw, 1rem);
+    right: 2rem;
+  }
+}
+
+/* Smaller laptop adjustments */
+@media (min-width: 769px) and (max-width: 1366px) {
+  .landing-cta-text {
+    max-width: 35%;
+    font-size: clamp(0.85rem, 1.3vw, 1.3rem);
+  }
+
+  .landing-footer-text {
+    max-width: 35%;
+    font-size: clamp(0.75rem, 1.2vw, 0.95rem);
   }
 }
