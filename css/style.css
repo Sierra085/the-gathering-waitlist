@@ -210,7 +210,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .landing-content h1 {
-  font-size: clamp(3rem, 8vw, 6rem);
+  font-size: clamp(4.5rem, 12vw, 9rem);
   line-height: 1.05;
   margin-bottom: 1.5rem;
   font-weight: 400;
@@ -218,7 +218,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .landing-tagline {
-  font-size: clamp(1rem, 2vw, 1.5rem);
+  font-size: clamp(1.5rem, 3vw, 2.25rem);
   line-height: 1.6;
   margin-bottom: 2rem;
   font-weight: 300;
