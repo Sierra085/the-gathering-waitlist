@@ -176,7 +176,10 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .landing-nav-links {
-  display: none;
+  display: flex;
+  gap: 2rem;
+  position: absolute;
+  right: 3rem;
 }
 
 .landing-nav-links a {
@@ -197,12 +200,12 @@ h1, h2, h3, h4, h5, h6 {
   z-index: 1;
   max-width: 650px;
   margin-top: auto;
-  margin-bottom: auto;
+  margin-bottom: 0;
   padding-left: 0;
 }
 
 .landing-content h1 {
-  font-size: 6rem;
+  font-size: clamp(3rem, 8vw, 6rem);
   line-height: 1.05;
   margin-bottom: 1.5rem;
   font-weight: 400;
@@ -210,19 +213,23 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .landing-tagline {
-  font-size: 1.5rem;
+  font-size: clamp(1rem, 2vw, 1.5rem);
   line-height: 1.6;
   margin-bottom: 2rem;
   font-weight: 300;
 }
 
 .landing-cta-text {
-  font-size: 1.3rem;
+  font-size: clamp(1rem, 1.8vw, 1.3rem);
   line-height: 1.6;
   font-weight: 700;
   font-style: italic;
   letter-spacing: 0.5px;
-  margin-bottom: 1.5rem;
+  margin-bottom: 0;
+  position: absolute;
+  bottom: 3rem;
+  left: 0;
+  max-width: 400px;
 }
 
 .landing-cta-btn {
@@ -251,7 +258,7 @@ h1, h2, h3, h4, h5, h6 {
   bottom: 3rem;
   right: 3rem;
   z-index: 1;
-  font-size: 1.2rem;
+  font-size: clamp(1rem, 1.8vw, 1.2rem);
   font-weight: 300;
   text-align: right;
   max-width: 500px;
