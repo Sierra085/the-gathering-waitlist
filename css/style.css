@@ -1362,3 +1362,16 @@ section.visible {
     bottom: 3rem;
   }
 }
+
+/* Medium screen adjustments for landing page to prevent overlap */
+@media (min-width: 769px) and (max-width: 1100px) {
+  .landing-cta-text {
+    max-width: 40%;
+    font-size: clamp(0.9rem, 1.8vw, 1.4rem);
+  }
+
+  .landing-footer-text {
+    max-width: 40%;
+    font-size: clamp(0.8rem, 1.5vw, 1rem);
+  }
+}
