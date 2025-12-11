@@ -202,6 +202,7 @@ h1, h2, h3, h4, h5, h6 {
   margin-top: auto;
   margin-bottom: 0;
   padding-left: 0;
+  padding-top: 5rem;
 }
 
 .landing-content h1 {
@@ -1295,5 +1296,58 @@ section.visible {
   #hero2 .see-inside {
     font-size: 1rem;
     bottom: 4rem;
+  }
+
+  /* Landing Page Mobile Adjustments */
+  #landing-page {
+    background-position: 75% center;
+    padding: 0 1.5rem 2rem 1.5rem;
+  }
+
+  .landing-nav {
+    padding: 0.75rem 1.5rem;
+  }
+
+  .landing-nav .landing-brandmark {
+    width: 35px;
+    left: 1.5rem;
+  }
+
+  .landing-announcement {
+    font-size: clamp(0.75rem, 2.5vw, 1rem);
+    padding: 0 50px;
+  }
+
+  .landing-nav-links {
+    right: 1.5rem;
+    gap: 1rem;
+  }
+
+  .landing-nav-links a {
+    font-size: 0.85rem;
+  }
+
+  .landing-content {
+    padding-top: 4rem;
+    max-width: 100%;
+  }
+
+  .landing-content h1 {
+    font-size: clamp(2.5rem, 10vw, 4rem);
+  }
+
+  .landing-tagline {
+    font-size: clamp(0.9rem, 3vw, 1.2rem);
+  }
+
+  .landing-cta-text {
+    font-size: clamp(0.85rem, 2.5vw, 1.1rem);
+    max-width: 300px;
+  }
+
+  .landing-footer-text {
+    font-size: clamp(0.85rem, 2.5vw, 1rem);
+    right: 1.5rem;
+    max-width: 350px;
   }
 }
