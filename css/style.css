@@ -231,10 +231,11 @@ h1, h2, h3, h4, h5, h6 {
   font-style: italic;
   letter-spacing: 0.5px;
   margin-bottom: 0;
-  position: absolute;
+  position: fixed;
   bottom: 3rem;
-  left: 0;
+  left: 3rem;
   max-width: 600px;
+  z-index: 1;
 }
 
 .landing-cta-btn {
@@ -259,7 +260,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .landing-footer-text {
-  position: absolute;
+  position: fixed;
   bottom: 3rem;
   right: 3rem;
   z-index: 1;
@@ -1347,12 +1348,17 @@ section.visible {
 
   .landing-cta-text {
     font-size: clamp(0.85rem, 2.5vw, 1.1rem);
-    max-width: 300px;
+    max-width: 90%;
+    left: 1.5rem;
+    bottom: 8rem;
   }
 
   .landing-footer-text {
     font-size: clamp(0.85rem, 2.5vw, 1rem);
     right: 1.5rem;
-    max-width: 350px;
+    left: 1.5rem;
+    max-width: 90%;
+    text-align: left;
+    bottom: 3rem;
   }
 }
