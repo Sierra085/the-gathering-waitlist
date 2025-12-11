@@ -231,7 +231,7 @@ h1, h2, h3, h4, h5, h6 {
   font-style: italic;
   letter-spacing: 0.5px;
   margin-bottom: 0;
-  position: fixed;
+  position: absolute;
   bottom: 3rem;
   left: 3rem;
   max-width: 600px;
@@ -260,7 +260,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .landing-footer-text {
-  position: fixed;
+  position: absolute;
   bottom: 3rem;
   right: 3rem;
   z-index: 1;
