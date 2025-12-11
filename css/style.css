@@ -225,7 +225,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .landing-cta-text {
-  font-size: clamp(1rem, 1.8vw, 1.3rem);
+  font-size: clamp(1.5rem, 2.7vw, 1.95rem);
   line-height: 1.6;
   font-weight: 700;
   font-style: italic;
@@ -234,7 +234,7 @@ h1, h2, h3, h4, h5, h6 {
   position: absolute;
   bottom: 3rem;
   left: 0;
-  max-width: 400px;
+  max-width: 600px;
 }
 
 .landing-cta-btn {
