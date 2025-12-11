@@ -1328,8 +1328,9 @@ section.visible {
   }
 
   .landing-content {
-    padding-top: 4rem;
+    padding-top: 6rem;
     max-width: 100%;
+    margin-top: 2rem;
   }
 
   .landing-content h1 {
