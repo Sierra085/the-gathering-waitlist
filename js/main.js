@@ -123,18 +123,24 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // Virtual coworking branching logic
-  window.branchYes = function () {
-    // Validate that a radio button was actually selected
-    const current = document.querySelector(".question.active");
+  window.handleCoworkingBranch = function () {
     const radioName = 'Do you know what virtual co-working is? (If yes, skip to Section 3. If no, skip to Section 4)';
     const checked = document.querySelector(`input[name="${radioName}"]:checked`);
+    
     if (!checked) {
       alert('Please select an option before proceeding.');
       return;
     }
     
+    if (checked.value === 'Yes') {
+      branchYes();
+    } else {
+      branchNo();
+    }
+  };
+
+  window.branchYes = function () {
     // If Yes, proceed to question 15 (understanding)
-    // Enable required on questions 15-19
     setTimeout(() => {
       questions[currentStep - 1].classList.remove("active");
       currentStep = 15;
@@ -144,15 +150,6 @@ document.addEventListener("DOMContentLoaded", () => {
   };
 
   window.branchNo = function () {
-    // Validate that a radio button was actually selected
-    const current = document.querySelector(".question.active");
-    const radioName = 'Do you know what virtual co-working is? (If yes, skip to Section 3. If no, skip to Section 4)';
-    const checked = document.querySelector(`input[name="${radioName}"]:checked`);
-    if (!checked) {
-      alert('Please select an option before proceeding.');
-      return;
-    }
-    
     // If No, skip to question 20 (worries)
     // Disable required on questions 15-19 since they won't be shown
     document.querySelector('[name="Briefly describe what your understanding of virtual co-working is in your own words."]').removeAttribute('required');
