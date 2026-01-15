@@ -58,26 +58,26 @@
         
         <div class="question" data-step="2">
           <h2>What's your full name?</h2>
-          <input type="text" name="full_name" placeholder="Enter your full name" required />
+          <input type="text" name="Full name" placeholder="Enter your full name" required />
           <button type="button" onclick="nextQuestion()">Next</button>
         </div>
 
         <div class="question" data-step="3">
           <h2>What's your email?</h2>
-          <input type="email" name="email" placeholder="Enter your email" required />
+          <input type="email" name="Email" placeholder="Enter your email" required />
           <button type="button" onclick="nextQuestion()">Next</button>
         </div>
 
         <div class="question" data-step="4">
           <h2>How old are you?</h2>
-          <input type="text" name="age" list="ageList" placeholder="Select or type your age" required />
+          <input type="text" name="Age" list="ageList" placeholder="Select or type your age" required />
           <datalist id="ageList"></datalist>
           <button type="button" onclick="nextQuestion()">Next</button>
         </div>
 
         <div class="question" data-step="5">
           <h2>What's your current working status / occupation?</h2>
-          <input type="text" name="occupation" list="occupationList" placeholder="Select or type" required />
+          <input type="text" name="Current working status or occupation" list="occupationList" placeholder="Select or type" required />
           <datalist id="occupationList">
             <option value="Student">
             <option value="Intern">
@@ -94,14 +94,14 @@
 
         <div class="question" data-step="6">
           <h2>Which country are you based in?</h2>
-          <input type="text" name="country" list="countryList" placeholder="Select or type your country" required />
+          <input type="text" name="Which country are you based in? (You may name more than 1 if you travel often.)" list="countryList" placeholder="Select or type your country" required />
           <datalist id="countryList"></datalist>
           <button type="button" onclick="nextQuestion()">Next</button>
         </div>
 
         <div class="question" data-step="7">
           <h2>What's your relationship / family status?</h2>
-          <select name="relationship" required>
+          <select name="What is your current relationship and family status?" required>
             <option value="">Select one</option>
             <option value="Single">Single</option>
             <option value="Married / Long-term relationship">Married / Long-term relationship</option>
@@ -118,17 +118,17 @@
         <div class="question" data-step="8">
           <h2>Which needs align most with you? (Pick up to 3)</h2>
           <div class="checkbox-group" id="needsGroup">
-            <label><input type="checkbox" name="needs[]" value="Body-doubling / the presence of another person when struggling with tasks"><span>Body-doubling / the presence of another person when struggling with tasks</span></label>
-            <label><input type="checkbox" name="needs[]" value="Focused accountability (single or group)"><span>Focused accountability (single or group)</span></label>
-            <label><input type="checkbox" name="needs[]" value="Encouragement"><span>Encouragement</span></label>
-            <label><input type="checkbox" name="needs[]" value="Mental health support"><span>Mental health support</span></label>
-            <label><input type="checkbox" name="needs[]" value="A safe space to be vulnerable with no judgment"><span>A safe space to be vulnerable with no judgment</span></label>
-            <label><input type="checkbox" name="needs[]" value="Companionship & like-minded community"><span>Companionship & like-minded community</span></label>
-            <label><input type="checkbox" name="needs[]" value="Mentorship"><span>Mentorship</span></label>
-            <label><input type="checkbox" name="needs[]" value="Professional advice & guidance"><span>Professional advice & guidance</span></label>
-            <label><input type="checkbox" name="needs[]" value="Access to gender-specific educational resources"><span>Access to gender-specific educational resources</span></label>
-            <label><input type="checkbox" name="needs[]" value="Access to gender-specific services"><span>Access to gender-specific services</span></label>
-            <label><input type="checkbox" name="needs[]" value="Other" id="needsOther"><span>Other</span></label>
+            <label><input type="checkbox" name="Which of these needs most align with you at this stage of your life? (You may pick up to 3 and/or add an option that is not provided below)" value="Body-doubling / the presence of another person when struggling with tasks"><span>Body-doubling / the presence of another person when struggling with tasks</span></label>
+            <label><input type="checkbox" name="Which of these needs most align with you at this stage of your life? (You may pick up to 3 and/or add an option that is not provided below)" value="Focused accountability (single or group)"><span>Focused accountability (single or group)</span></label>
+            <label><input type="checkbox" name="Which of these needs most align with you at this stage of your life? (You may pick up to 3 and/or add an option that is not provided below)" value="Encouragement"><span>Encouragement</span></label>
+            <label><input type="checkbox" name="Which of these needs most align with you at this stage of your life? (You may pick up to 3 and/or add an option that is not provided below)" value="Mental health support"><span>Mental health support</span></label>
+            <label><input type="checkbox" name="Which of these needs most align with you at this stage of your life? (You may pick up to 3 and/or add an option that is not provided below)" value="A safe space to be vulnerable with no judgment"><span>A safe space to be vulnerable with no judgment</span></label>
+            <label><input type="checkbox" name="Which of these needs most align with you at this stage of your life? (You may pick up to 3 and/or add an option that is not provided below)" value="Companionship & like-minded community"><span>Companionship & like-minded community</span></label>
+            <label><input type="checkbox" name="Which of these needs most align with you at this stage of your life? (You may pick up to 3 and/or add an option that is not provided below)" value="Mentorship"><span>Mentorship</span></label>
+            <label><input type="checkbox" name="Which of these needs most align with you at this stage of your life? (You may pick up to 3 and/or add an option that is not provided below)" value="Professional advice & guidance"><span>Professional advice & guidance</span></label>
+            <label><input type="checkbox" name="Which of these needs most align with you at this stage of your life? (You may pick up to 3 and/or add an option that is not provided below)" value="Access to gender-specific educational resources"><span>Access to gender-specific educational resources</span></label>
+            <label><input type="checkbox" name="Which of these needs most align with you at this stage of your life? (You may pick up to 3 and/or add an option that is not provided below)" value="Access to gender-specific services"><span>Access to gender-specific services</span></label>
+            <label><input type="checkbox" name="Which of these needs most align with you at this stage of your life? (You may pick up to 3 and/or add an option that is not provided below)" value="Other" id="needsOther"><span>Other</span></label>
           </div>
           <input type="text" name="needs_other_text" id="needsOtherText" placeholder="Please specify..." style="display:none; margin-top: 1rem;" />
           <button type="button" onclick="nextQuestion()">Next</button>
@@ -137,11 +137,11 @@
         <div class="question" data-step="9">
           <h2>Which types of tasks do you struggle with most? (Pick up to 3)</h2>
           <div class="checkbox-group" id="tasksGroup">
-            <label><input type="checkbox" name="tasks[]" value="Home care tasks (laundry, cleaning, decluttering, etc.)"><span>Home care tasks (laundry, cleaning, decluttering, etc.)</span></label>
-            <label><input type="checkbox" name="tasks[]" value="Self-care tasks (exercise, diet, rest, etc.)"><span>Self-care tasks (exercise, diet, rest, etc.)</span></label>
-            <label><input type="checkbox" name="tasks[]" value="Daily routines (morning routine, nighttime routine, etc.)"><span>Daily routines (morning routine, nighttime routine, etc.)</span></label>
-            <label><input type="checkbox" name="tasks[]" value="Work productivity"><span>Work productivity</span></label>
-            <label><input type="checkbox" name="tasks[]" value="Other" id="tasksOther"><span>Other</span></label>
+            <label><input type="checkbox" name="Which of these types of tasks do you struggle with most? Pick top 3, including an option you don't see in the list, which you can describe under \"Other\"" value="Home care tasks (laundry, cleaning, decluttering, etc.)"><span>Home care tasks (laundry, cleaning, decluttering, etc.)</span></label>
+            <label><input type="checkbox" name="Which of these types of tasks do you struggle with most? Pick top 3, including an option you don't see in the list, which you can describe under \"Other\"" value="Self-care tasks (exercise, diet, rest, etc.)"><span>Self-care tasks (exercise, diet, rest, etc.)</span></label>
+            <label><input type="checkbox" name="Which of these types of tasks do you struggle with most? Pick top 3, including an option you don't see in the list, which you can describe under \"Other\"" value="Daily routines (morning routine, nighttime routine, etc.)"><span>Daily routines (morning routine, nighttime routine, etc.)</span></label>
+            <label><input type="checkbox" name="Which of these types of tasks do you struggle with most? Pick top 3, including an option you don't see in the list, which you can describe under \"Other\"" value="Work productivity"><span>Work productivity</span></label>
+            <label><input type="checkbox" name="Which of these types of tasks do you struggle with most? Pick top 3, including an option you don't see in the list, which you can describe under \"Other\"" value="Other" id="tasksOther"><span>Other</span></label>
           </div>
           <input type="text" name="tasks_other_text" id="tasksOtherText" placeholder="Please specify..." style="display:none; margin-top: 1rem;" />
           <button type="button" onclick="nextQuestion()">Next</button>
@@ -149,28 +149,28 @@
 
         <div class="question" data-step="10">
           <h2>Which of our primary features most interest you — and why?</h2>
-          <textarea name="primary_features_why" placeholder="Tell us what interests you and why..." required></textarea>
+          <textarea name="Which of our primary features most interest you and why?" placeholder="Tell us what interests you and why..." required></textarea>
           <button type="button" onclick="nextQuestion()">Next</button>
         </div>
 
         <div class="question" data-step="11">
           <h2>Which of our secondary (coming soon) features most interest you — and why?</h2>
-          <textarea name="secondary_features_why" placeholder="Tell us what interests you and why..."></textarea>
+          <textarea name="Which of our secondary (coming soon) features most interest you and why?" placeholder="Tell us what interests you and why..." required></textarea>
           <button type="button" onclick="nextQuestion()">Next</button>
         </div>
 
         <div class="question" data-step="12">
           <h2>What features would you like to see that aren't here — and why?</h2>
-          <textarea name="feature_suggestions" placeholder="Share your ideas..." required></textarea>
+          <textarea name="What features would you like to see that's not here (or anywhere else) and why?" placeholder="Share your ideas..." required></textarea>
           <button type="button" onclick="nextQuestion()">Next</button>
         </div>
 
         <div class="question" data-step="13">
           <h2>Which tier aligns most with you?</h2>
           <div class="radio-group">
-            <label><input type="radio" name="tier" value="Founding Member" required><span>Founding Member — Participant with founding privileges such as unchanged membership forever</span></label>
-            <label><input type="radio" name="tier" value="Community Host" required><span>Community Host — Participant + Host Training & Certification</span></label>
-            <label><input type="radio" name="tier" value="Community Leader" required><span>Community Leader — Participant + Host Training & Certification + Listed Service Provider/Collaborator</span></label>
+            <label><input type="radio" name="Which of these tiers sounds most aligned to you?" value="Founding Member" required><span>Founding Member — Participant with founding privileges such as unchanged membership forever</span></label>
+            <label><input type="radio" name="Which of these tiers sounds most aligned to you?" value="Community Host" required><span>Community Host — Participant + Host Training & Certification</span></label>
+            <label><input type="radio" name="Which of these tiers sounds most aligned to you?" value="Community Leader" required><span>Community Leader — Participant + Host Training & Certification + Listed Service Provider/Collaborator</span></label>
           </div>
           <button type="button" onclick="nextQuestion()">Next</button>
         </div>
@@ -180,40 +180,40 @@
         <div class="question" data-step="14">
           <h2>Do you know what virtual co-working is?</h2>
           <div class="radio-group">
-            <label><input type="radio" name="knows_coworking" value="Yes" onclick="branchYes()" required><span>Yes</span></label>
-            <label><input type="radio" name="knows_coworking" value="No" onclick="branchNo()" required><span>No</span></label>
+            <label><input type="radio" name="Do you know what virtual co-working is? (If yes, skip to Section 3. If no, skip to Section 4)" value="Yes" onclick="branchYes()" required><span>Yes</span></label>
+            <label><input type="radio" name="Do you know what virtual co-working is? (If yes, skip to Section 3. If no, skip to Section 4)" value="No" onclick="branchNo()" required><span>No</span></label>
           </div>
         </div>
 
         <div class="question" data-step="15">
           <h2>Describe your understanding</h2>
-          <textarea name="cw_understanding" placeholder="What do you know about virtual co-working?" required></textarea>
+          <textarea name="Briefly describe what your understanding of virtual co-working is in your own words." placeholder="What do you know about virtual co-working?" required></textarea>
           <button type="button" onclick="nextQuestion()">Next</button>
         </div>
 
         <div class="question" data-step="16">
           <h2>Where have you experienced virtual co-working before?</h2>
-          <textarea name="cw_where" placeholder="List platforms or communities..." required></textarea>
+          <textarea name="Where have you experienced virtual co-working before? Name the platforms and/or nature of the experience where appropriate." placeholder="List platforms or communities..." required></textarea>
           <button type="button" onclick="nextQuestion()">Next</button>
         </div>
 
         <div class="question" data-step="17">
           <h2>What did you like?</h2>
-          <textarea name="cw_like" placeholder="Share what worked well for you..." required></textarea>
+          <textarea name="What do/did you like about your experience(s)?" placeholder="Share what worked well for you..." required></textarea>
           <button type="button" onclick="nextQuestion()">Next</button>
         </div>
 
         <div class="question" data-step="18">
           <h2>What did you find lacking?</h2>
-          <textarea name="cw_lacking" placeholder="What could have been better?" required></textarea>
+          <textarea name="What do/did you find lacking in your experience?" placeholder="What could have been better?" required></textarea>
           <button type="button" onclick="nextQuestion()">Next</button>
         </div>
 
         <div class="question" data-step="19">
           <h2>Were you a paying member?</h2>
           <div class="radio-group">
-            <label><input type="radio" name="cw_paid" value="Yes" required><span>Yes</span></label>
-            <label><input type="radio" name="cw_paid" value="No" required><span>No</span></label>
+            <label><input type="radio" name="Have you been or are you currently a paying member of the abovementioned coworking platform(s)?" value="Yes" required><span>Yes</span></label>
+            <label><input type="radio" name="Have you been or are you currently a paying member of the abovementioned coworking platform(s)?" value="No" required><span>No</span></label>
           </div>
           <button type="button" onclick="nextQuestion()">Next</button>
         </div>
@@ -222,28 +222,28 @@
         
         <div class="question" data-step="20">
           <h2>List your worries entering the new year.</h2>
-          <textarea name="worries" placeholder="Share what's on your mind..." required></textarea>
+          <textarea name="List all your worries entering into the new calendar year." placeholder="Share what's on your mind..." required></textarea>
           <button type="button" onclick="nextQuestion()">Next</button>
         </div>
 
         <div class="question" data-step="21">
           <h2>List your goals entering the new year.</h2>
-          <textarea name="goals" placeholder="What do you want to achieve?" required></textarea>
+          <textarea name="List all your goals and/or aspirations entering into the new calendar year." placeholder="What do you want to achieve?" required></textarea>
           <button type="button" onclick="nextQuestion()">Next</button>
         </div>
 
         <div class="question" data-step="22">
           <h2>When are you usually least distracted?</h2>
           <div class="checkbox-group">
-            <label><input type="checkbox" name="times[]" value="Weekday mornings"><span>Weekday mornings</span></label>
-            <label><input type="checkbox" name="times[]" value="Weekday afternoons"><span>Weekday afternoons</span></label>
-            <label><input type="checkbox" name="times[]" value="Weekday evenings"><span>Weekday evenings</span></label>
-            <label><input type="checkbox" name="times[]" value="Weekday nights"><span>Weekday nights</span></label>
-            <label><input type="checkbox" name="times[]" value="Weekend mornings"><span>Weekend mornings</span></label>
-            <label><input type="checkbox" name="times[]" value="Weekend afternoons"><span>Weekend afternoons</span></label>
-            <label><input type="checkbox" name="times[]" value="Weekend nights"><span>Weekend nights</span></label>
-            <label><input type="checkbox" name="times[]" value="Flexible"><span>Flexible</span></label>
-            <label><input type="checkbox" name="times[]" value="Other" id="timesOther"><span>Other</span></label>
+            <label><input type="checkbox" name="Which of these times are you most likely able to get time to yourself or be least distracted? (Answer in respect to your own timezone. You may select all that's relevant or simply select the \"Flexible\" option. If you have alternative arrangements, feel free to elaborate under \"Other\")" value="Weekday mornings"><span>Weekday mornings</span></label>
+            <label><input type="checkbox" name="Which of these times are you most likely able to get time to yourself or be least distracted? (Answer in respect to your own timezone. You may select all that's relevant or simply select the \"Flexible\" option. If you have alternative arrangements, feel free to elaborate under \"Other\")" value="Weekday afternoons"><span>Weekday afternoons</span></label>
+            <label><input type="checkbox" name="Which of these times are you most likely able to get time to yourself or be least distracted? (Answer in respect to your own timezone. You may select all that's relevant or simply select the \"Flexible\" option. If you have alternative arrangements, feel free to elaborate under \"Other\")" value="Weekday evenings"><span>Weekday evenings</span></label>
+            <label><input type="checkbox" name="Which of these times are you most likely able to get time to yourself or be least distracted? (Answer in respect to your own timezone. You may select all that's relevant or simply select the \"Flexible\" option. If you have alternative arrangements, feel free to elaborate under \"Other\")" value="Weekday nights"><span>Weekday nights</span></label>
+            <label><input type="checkbox" name="Which of these times are you most likely able to get time to yourself or be least distracted? (Answer in respect to your own timezone. You may select all that's relevant or simply select the \"Flexible\" option. If you have alternative arrangements, feel free to elaborate under \"Other\")" value="Weekend mornings"><span>Weekend mornings</span></label>
+            <label><input type="checkbox" name="Which of these times are you most likely able to get time to yourself or be least distracted? (Answer in respect to your own timezone. You may select all that's relevant or simply select the \"Flexible\" option. If you have alternative arrangements, feel free to elaborate under \"Other\")" value="Weekend afternoons"><span>Weekend afternoons</span></label>
+            <label><input type="checkbox" name="Which of these times are you most likely able to get time to yourself or be least distracted? (Answer in respect to your own timezone. You may select all that's relevant or simply select the \"Flexible\" option. If you have alternative arrangements, feel free to elaborate under \"Other\")" value="Weekend nights"><span>Weekend nights</span></label>
+            <label><input type="checkbox" name="Which of these times are you most likely able to get time to yourself or be least distracted? (Answer in respect to your own timezone. You may select all that's relevant or simply select the \"Flexible\" option. If you have alternative arrangements, feel free to elaborate under \"Other\")" value="Flexible"><span>Flexible</span></label>
+            <label><input type="checkbox" name="Which of these times are you most likely able to get time to yourself or be least distracted? (Answer in respect to your own timezone. You may select all that's relevant or simply select the \"Flexible\" option. If you have alternative arrangements, feel free to elaborate under \"Other\")" value="Other" id="timesOther"><span>Other</span></label>
           </div>
           <input type="text" name="times_other_text" id="timesOtherText" placeholder="Please specify..." style="display:none; margin-top: 1rem;" />
           <button type="button" onclick="nextQuestion()">Next</button>
@@ -254,17 +254,17 @@
         <div class="question" data-step="23">
           <h2>How much would you be happy to pay monthly for the primary features?</h2>
           <div class="radio-group">
-            <label><input type="radio" name="pricing" value="35–45" required><span>35–45</span></label>
-            <label><input type="radio" name="pricing" value="46–50" required><span>46–50</span></label>
-            <label><input type="radio" name="pricing" value="51–60" required><span>51–60</span></label>
-            <label><input type="radio" name="pricing" value="I'm content with a free membership with limited access" required><span>I'm content with a free membership with limited access</span></label>
+            <label><input type="radio" name="How much would you be happy to pay monthly for the primary features?" value="35–45" required><span>35–45</span></label>
+            <label><input type="radio" name="How much would you be happy to pay monthly for the primary features?" value="46–50" required><span>46–50</span></label>
+            <label><input type="radio" name="How much would you be happy to pay monthly for the primary features?" value="51–60" required><span>51–60</span></label>
+            <label><input type="radio" name="How much would you be happy to pay monthly for the primary features?" value="I'm content with a free membership with limited access" required><span>I'm content with a free membership with limited access</span></label>
           </div>
           <button type="button" onclick="nextQuestion()">Next</button>
         </div>
 
         <div class="question" data-step="24">
           <h2>Anything else you'd like to add?</h2>
-          <textarea name="other_info" placeholder="Share any final thoughts..."></textarea>
+          <textarea name="Anything else you'd like to add?" placeholder="Share any final thoughts..." required></textarea>
           <p class="form-disclaimer">By submitting this form, you also consent to receiving emails from The Gathering related to our launch and occasional marketing communications. We're a huge advocate of self-care and self-agency—please unsubscribe if and when our communications are no longer serving you, using the link in our emails.</p>
           <button type="submit">Join the Waitlist</button>
         </div>

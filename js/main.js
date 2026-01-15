@@ -71,13 +71,24 @@ document.addEventListener("DOMContentLoaded", () => {
       
       // Skip validation for intro screen (step 1)
       if (currentStepNum > 1) {
-        // Validate checkbox groups (Q9, Q10, Q23 - steps with checkbox requirements)
-        if (currentStepNum === 9 || currentStepNum === 10 || currentStepNum === 23) {
-          const checkboxGroup = current.querySelector('.checkbox-group');
-          if (checkboxGroup) {
-            const checked = checkboxGroup.querySelectorAll('input[type="checkbox"]:checked');
-            if (checked.length === 0) {
-              alert('Please select at least one option before proceeding.');
+        // Validate checkbox groups (steps 8, 9, 22 - needs, tasks, times)
+        const checkboxGroup = current.querySelector('.checkbox-group');
+        if (checkboxGroup) {
+          const checked = checkboxGroup.querySelectorAll('input[type="checkbox"]:checked');
+          if (checked.length === 0) {
+            alert('Please select at least one option before proceeding.');
+            return;
+          }
+        }
+        
+        // Validate radio groups
+        const radioGroup = current.querySelector('.radio-group');
+        if (radioGroup) {
+          const radioName = radioGroup.querySelector('input[type="radio"]')?.name;
+          if (radioName) {
+            const checked = document.querySelector(`input[name="${radioName}"]:checked`);
+            if (!checked) {
+              alert('Please select an option before proceeding.');
               return;
             }
           }
@@ -113,27 +124,45 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Virtual coworking branching logic
   window.branchYes = function () {
-    // If Yes, proceed to question 16 (understanding)
-    // Enable required on questions 16-19
+    // Validate that a radio button was actually selected
+    const current = document.querySelector(".question.active");
+    const radioName = 'Do you know what virtual co-working is? (If yes, skip to Section 3. If no, skip to Section 4)';
+    const checked = document.querySelector(`input[name="${radioName}"]:checked`);
+    if (!checked) {
+      alert('Please select an option before proceeding.');
+      return;
+    }
+    
+    // If Yes, proceed to question 15 (understanding)
+    // Enable required on questions 15-19
     setTimeout(() => {
       questions[currentStep - 1].classList.remove("active");
-      currentStep = 16;
+      currentStep = 15;
       questions[currentStep - 1].classList.add("active");
       updateProgress();
     }, 300);
   };
 
   window.branchNo = function () {
-    // If No, skip to question 21 (worries)
-    // Disable required on questions 16-19 since they won't be shown
-    document.querySelector('[name="cw_understanding"]').removeAttribute('required');
-    document.querySelector('[name="cw_where"]').removeAttribute('required');
-    document.querySelector('[name="cw_like"]').removeAttribute('required');
-    document.querySelector('[name="cw_lacking"]').removeAttribute('required');
+    // Validate that a radio button was actually selected
+    const current = document.querySelector(".question.active");
+    const radioName = 'Do you know what virtual co-working is? (If yes, skip to Section 3. If no, skip to Section 4)';
+    const checked = document.querySelector(`input[name="${radioName}"]:checked`);
+    if (!checked) {
+      alert('Please select an option before proceeding.');
+      return;
+    }
+    
+    // If No, skip to question 20 (worries)
+    // Disable required on questions 15-19 since they won't be shown
+    document.querySelector('[name="Briefly describe what your understanding of virtual co-working is in your own words."]').removeAttribute('required');
+    document.querySelector('[name="Where have you experienced virtual co-working before? Name the platforms and/or nature of the experience where appropriate."]').removeAttribute('required');
+    document.querySelector('[name="What do/did you like about your experience(s)?"]').removeAttribute('required');
+    document.querySelector('[name="What do/did you find lacking in your experience?"]').removeAttribute('required');
     
     setTimeout(() => {
       questions[currentStep - 1].classList.remove("active");
-      currentStep = 21;
+      currentStep = 20;
       questions[currentStep - 1].classList.add("active");
       updateProgress();
     }, 300);
