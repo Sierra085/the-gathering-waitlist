@@ -276,15 +276,82 @@ document.addEventListener("DOMContentLoaded", () => {
     current.appendChild(statusMsg);
 
     try {
-      // Use FormData from the form directly
-      const formData = new FormData(form);
+      // Collect all form data into an object
+      const formDataObj = {};
+      const processedCheckboxNames = new Set();
+      
+      // Get all form elements
+      const formElements = form.elements;
+      
+      for (let i = 0; i < formElements.length; i++) {
+        const element = formElements[i];
+        const name = element.name;
+        
+        if (!name || element.disabled) continue;
+        
+        // Skip "other text" fields - we'll handle them with checkboxes
+        if (name === 'needs_other_text' || name === 'tasks_other_text' || name === 'times_other_text') {
+          continue;
+        }
+        
+        // Handle checkboxes - combine multiple values into comma-separated string
+        if (element.type === 'checkbox') {
+          // Check if we've already processed checkboxes with this name
+          if (!processedCheckboxNames.has(name)) {
+            processedCheckboxNames.add(name);
+            
+            // Get all checked checkboxes with this name
+            const checkedBoxes = form.querySelectorAll(`input[name="${name}"]:checked`);
+            const values = Array.from(checkedBoxes).map(cb => {
+              // If "Other" is checked, append the text from the corresponding text field
+              if (cb.value === 'Other') {
+                let otherText = '';
+                if (cb.id === 'needsOther') {
+                  otherText = document.getElementById('needsOtherText')?.value || '';
+                } else if (cb.id === 'tasksOther') {
+                  otherText = document.getElementById('tasksOtherText')?.value || '';
+                } else if (cb.id === 'timesOther') {
+                  otherText = document.getElementById('timesOtherText')?.value || '';
+                }
+                return otherText ? `Other: ${otherText}` : 'Other';
+              }
+              return cb.value;
+            });
+            
+            if (values.length > 0) {
+              formDataObj[name] = values.join(', ');
+            }
+          }
+        }
+        // Handle radio buttons
+        else if (element.type === 'radio') {
+          if (element.checked) {
+            formDataObj[name] = element.value;
+          }
+        }
+        // Handle all other inputs
+        else if (element.tagName === 'INPUT' || element.tagName === 'TEXTAREA' || element.tagName === 'SELECT') {
+          formDataObj[name] = element.value;
+        }
+      }
+      
+      // Debug: log what we're sending
+      console.log("Form data being sent:", formDataObj);
+      
+      // Convert to URL-encoded format
+      const formBody = Object.keys(formDataObj).map(key => 
+        encodeURIComponent(key) + '=' + encodeURIComponent(formDataObj[key])
+      ).join('&');
 
       // Google Sheets endpoint
       const response = await fetch(
         "https://script.google.com/macros/s/AKfycbwmMyJ_v8osQyCKQebIhin3es9OOubTRBCqpRXLZc5oLsQSEueI8gg14bOQK6nEpfZ-/exec",
         {
           method: "POST",
-          body: formData
+          headers: {
+            'Content-Type': 'application/x-www-form-urlencoded'
+          },
+          body: formBody
         }
       );
 
